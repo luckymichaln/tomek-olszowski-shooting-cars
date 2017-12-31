@@ -1,104 +1,25 @@
 <template>
   <div id="app">
-    <home />
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
-import home from '@/components/pages/home'
 
 export default {
-  name: 'app',
-
-  components: {
-    home
-  }
+  name: 'app'
 }
 </script>
 
 <style lang="scss">
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline; }
+  @import "./assets/styles/main";
 
-/* HTML5 display-role reset for older browsers */
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block; }
-
-body {
-  line-height: 1; }
-
-ol, ul {
-  list-style: none; }
-
-blockquote, q {
-  quotes: none; }
-
-select,
-button,
-input {
-  outline: none;
-  border: none;
-  -webkit-appearance: none;
-
-  &:active,
-  &:focus {
-    outline: none;
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
   }
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-blockquote {
-  &:before, &:after {
-    content: '';
-    content: none; } }
-
-q {
-  &:before, &:after {
-    content: '';
-    content: none; } }
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0; }
-
-select:-moz-focusring {
-  color: transparent;
-  text-shadow: 0 0 0 #000;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  margin: 0;
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
-input,
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-
-  &:active,
-  &:focus {
-    border: none;
-    outline: none;
+  .fade-enter, .fade-leave-to {
+    opacity: 0
   }
-}
-
-a {
-  text-decoration: none;
-}
 </style>

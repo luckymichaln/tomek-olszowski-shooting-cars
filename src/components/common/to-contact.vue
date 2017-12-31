@@ -1,6 +1,7 @@
 <template>
   <div>
-    Contact
+    <to-header />
+    <p>Some contact infos...</p>
   </div>
 </template>
 

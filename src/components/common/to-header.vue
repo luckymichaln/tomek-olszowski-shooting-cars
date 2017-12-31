@@ -23,13 +23,7 @@
   export default {
     data: () => ({
 
-    }),
-    mounted () {
-      console.log(this.$router)
-    },
-    beforeDestroy () {
-      console.log('lalal')
-    }
+    })
   }
 </script>
 
