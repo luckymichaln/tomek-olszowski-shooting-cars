@@ -1,7 +1,7 @@
 <template>
-  <header class="to-header">
+  <header class="to-header box">
     <nav class="to-header__nav">
-      <ul>
+      <ul ref="navList">
         <li>
           <router-link :to="{ name: 'home'}">Works</router-link>
         </li>
@@ -28,11 +28,13 @@
 </script>
 
 <style lang="scss">
+  @import "./../../assets/styles/main";
+
   .to-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-top: 25px;
+    margin: 25px auto 50px;
 
     &__nav ul {
       display: flex;

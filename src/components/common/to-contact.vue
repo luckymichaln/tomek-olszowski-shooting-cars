@@ -1,19 +1,15 @@
 <template>
   <div>
-    <to-header />
-    <p>Some contact infos...</p>
+    <div v-html="content"></div>
+    <div v-html="pdf"></div>
   </div>
 </template>
 
 <script>
-  import toHeader from '@/components/common/to-header'
-
   export default {
-    data: () => ({
-
-    }),
-    components: {
-      toHeader
+    props: {
+      content: String,
+      pdf: String
     }
   }
 </script>
