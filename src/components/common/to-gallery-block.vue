@@ -1,18 +1,19 @@
 <template>
   <div class="to-gallery-block">
     <div
-      v-for="(sessions, index) of content"
+      v-for="(item, index) of content"
       :key="index"
       class="to-gallery-block__inner">
+        <h1>{{ item.about.title }}</h1>
         <div
-          v-for="(img, index) in sessions.gallery"
+          v-for="(img, index) in item.gallery"
           :key="index"
           class="to-gallery-block__brick">
           <img
-          :key="index"
-          :src="img.url"
-          :alt="sessions.title" />
-          <span class="brick-title">{{ sessions.title }}</span>
+            :key="index"
+            :srcset="img.src"
+            alt="" />
+          <div class="brick-info">{{ item.about.title }}</div>
         </div>
     </div>
   </div>
@@ -21,9 +22,7 @@
 <script>
   export default {
     props: {
-      content: {
-        type: [Object, Array]
-      }
+      content: Array
     }
   }
 </script>
@@ -31,8 +30,8 @@
 <style lang="scss">
   .to-gallery-block {
     &__brick {
-      height: 620px;
-      width: 100%;
+      // height: 620px;
+      // width: 100%;
       margin-bottom: 10px;
       position: relative;
       overflow: hidden;
@@ -43,19 +42,23 @@
           filter: blur(8px);
         }
 
-        .brick-title {
+        .brick-info {
           opacity: 1;
           transition: .3s .1s;
         }
       }
 
       img {
-        height: 100%;
+        // height: 100%;
         object-fit: contain;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        perspective: 1000;
         transition: .3s;
       }
 
-      .brick-title {
+      .brick-info {
         position: absolute;
         top: 50%;
         left: 50%;
