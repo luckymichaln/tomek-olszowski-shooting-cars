@@ -38,10 +38,12 @@ const getters = {
   isContentLoaded: state => state.isContentLoaded,
   sessions (state) {
     return (state.sessions || []).map(el => {
-      const { acf } = el
+      const { slug, title, about, gallery } = el.acf.session[0]
       return {
-        about: acf.session[0].about[0],
-        gallery: acf.session[0].gallery
+        title,
+        about,
+        gallery,
+        slug
       }
     })
   }

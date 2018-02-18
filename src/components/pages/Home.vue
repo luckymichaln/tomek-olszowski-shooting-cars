@@ -14,6 +14,9 @@
     },
     components: {
       toGalleryBlock
+    },
+    mounted () {
+      console.log(this.sessions, 'sessions in component')
     }
   }
 </script>
