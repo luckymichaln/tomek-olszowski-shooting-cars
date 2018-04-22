@@ -20,8 +20,26 @@
       this.$store.dispatch('GET_HP_SESSIONS')
     },
     computed: {
-      ...mapGetters(['sessions', 'isContentLoaded'])
+      ...mapGetters(['sessions', 'isContentLoaded', 'pagePosition'])
     },
+
+    mounted () {
+      if (this.pagePosition) {
+        let body = document.getElementsByTagName('body')
+        let height = `${this.pagePosition}` + 500
+
+        body[0].style.height = `${height}px`
+
+        setTimeout(() => {
+          window.scrollTo(0, this.pagePosition)
+        }, 100)
+
+        setTimeout(() => {
+          body[0].style.height = 'auto'
+        }, 1000)
+      }
+    },
+
     components: {
       toHeader,
       toHpGalleryBlock

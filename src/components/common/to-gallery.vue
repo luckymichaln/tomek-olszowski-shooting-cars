@@ -27,7 +27,6 @@ export default {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    padding: 60px 0;
 
     &__img-wrapper {
       max-width: 890px;

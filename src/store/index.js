@@ -7,7 +7,9 @@ Vue.use(Vuex)
 const state = {
   isContentLoaded: false,
   sessions: null,
-  singleSession: null
+  singleSession: null,
+  pagePosition: null,
+  pageHeight: null
 }
 
 const actions = {
@@ -53,6 +55,10 @@ const mutations = {
 
   SET_SINGLE_SESSION (state, { data }) {
     state.singleSession = data
+  },
+
+  SET_PAGE_POSITION (state, { data }) {
+    state.pagePosition = data
   }
 }
 
@@ -87,7 +93,8 @@ const getters = {
       }),
       title
     }
-  }
+  },
+  pagePosition: state => state.pagePosition
 }
 
 export default new Vuex.Store({

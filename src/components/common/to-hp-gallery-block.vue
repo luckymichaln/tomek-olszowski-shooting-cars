@@ -14,6 +14,7 @@
             :to="`/${item.id}/${item.slug}`"
             :class="brickClass(img)"
             :style="brickStyles(img)"
+            @click.native="setPagePosition"
           >
             <img
               v-if="!img.isEmpty"
@@ -46,6 +47,11 @@
 
       brickStyles (brick) {
         return parseInt(brick.offset) === 0 ? `width: ${brick.width}; margin-left: unset;` : `width: ${brick.width}; margin-left: ${brick.offset}%;`
+      },
+
+      setPagePosition () {
+        let position = window.scrollY
+        this.$store.commit('SET_PAGE_POSITION', { data: position })
       }
     }
   }
