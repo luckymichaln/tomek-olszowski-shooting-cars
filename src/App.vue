@@ -1,34 +1,20 @@
 <template>
   <div id="app" :class="setAppClass">
-    <to-header />
     <transition name="fade" mode="out-in">
-      <router-view v-if="isContentLoaded"></router-view>
-    </transition>
-    <transition name="fade" mode="out-in">
-      <div class="loader" v-if="!isContentLoaded"></div>
+      <router-view></router-view>
     </transition>
   </div>
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
-  import toHeader from '@/components/common/to-header'
-
   export default {
     name: 'app',
-    created () {
-      this.$store.dispatch('GET_SESSIONS')
-    },
     computed: {
-      ...mapGetters(['isContentLoaded']),
       setAppClass () {
         return {
           'app': true
         }
       }
-    },
-    components: {
-      toHeader
     }
   }
 </script>

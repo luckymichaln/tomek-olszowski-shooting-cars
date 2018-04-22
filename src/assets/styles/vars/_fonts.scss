@@ -1,1 +1,15 @@
-$font-primary: 'Lato', sans-serif;
+@font-face {
+  font-family: 'HKGrotesk-Bold';
+  src: url('/src/assets/fonts/HKGrotesk-Bold.otf') format('otf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'HKGrotesk-Light';
+  src: url('/src/assets/fonts/HKGrotesk-Light.otf') format('otf');
+  font-weight: 400;
+}
+
+// $font-primary: 'lato', sans-serif;
+$font-primary: 'HKGrotesk-Light', sans-serif;
+$font-bold: 'HKGrotesk-Bold', sans-serif;

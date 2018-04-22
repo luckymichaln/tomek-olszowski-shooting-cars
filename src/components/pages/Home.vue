@@ -1,22 +1,30 @@
 <template>
-  <div class="box main">
-    <to-gallery-block :content="sessions"/>
+  <div>
+    <to-header />
+    <div class="box main">
+      <transition name="fade" mode="out-in">
+        <to-hp-gallery-block v-if="isContentLoaded" :content="sessions"/>
+        <div class="loader" v-if="!isContentLoaded"/>
+      </transition>
+    </div>
   </div>
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
-  import toGalleryBlock from '@/components/common/to-gallery-block'
+  import toHeader from '@/components/common/to-header'
+  import toHpGalleryBlock from '@/components/common/to-hp-gallery-block'
 
   export default {
+    created () {
+      this.$store.dispatch('GET_HP_SESSIONS')
+    },
     computed: {
-      ...mapGetters(['sessions'])
+      ...mapGetters(['sessions', 'isContentLoaded'])
     },
     components: {
-      toGalleryBlock
-    },
-    mounted () {
-      console.log(this.sessions, 'sessions in component')
+      toHeader,
+      toHpGalleryBlock
     }
   }
 </script>

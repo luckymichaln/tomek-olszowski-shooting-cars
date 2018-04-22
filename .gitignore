@@ -29,7 +29,6 @@ npm-debug.log
 yarn-error.log
 yarn.*
 dist-play
-build
 *.env
 
 # development
