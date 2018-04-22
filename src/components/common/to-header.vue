@@ -106,11 +106,15 @@
       }
 
       .link-behance img {
+        position: relative;
+        top: 6px;
         height: 31px;
         width: 31px;
       }
 
       .link-instagram img {
+        position: relative;
+        top: 6px;
         height: 21px;
         width: 20px;
       }
