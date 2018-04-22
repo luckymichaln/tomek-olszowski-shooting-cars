@@ -1,14 +1,14 @@
 <template>
   <div>
-    <p>About</p>
+    <p>{{ about }}</p>
   </div>
 </template>
 
 <script>
   export default {
-    data: () => ({
-
-    })
+    props: {
+      about: String
+    }
   }
 </script>
 

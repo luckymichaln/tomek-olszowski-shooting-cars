@@ -25,17 +25,18 @@
 
     mounted () {
       if (this.pagePosition) {
-        let body = document.getElementsByTagName('body')
-        let height = `${this.pagePosition}` + 500
+        let body = document.getElementsByTagName('body')[0]
+        let height = `${this.pagePosition}`
+        let pageHeight = parseInt(height) + 1000
 
-        body[0].style.height = `${height}px`
+        body.style.height = `${pageHeight}px`
 
         setTimeout(() => {
           window.scrollTo(0, this.pagePosition)
         }, 100)
 
         setTimeout(() => {
-          body[0].style.height = 'auto'
+          body.style.height = 'auto'
         }, 1000)
       }
     },

@@ -1,19 +1,32 @@
 <template>
   <header class="to-header box--width">
-    <router-link :to="{ name: 'home' }" class="main-logo">
+    <router-link :to="{ name: 'home' }" class="main-logo" @click.native="resetPagePosition">
       <img src="/src/assets/images/logo_main_new.svg" alt="Tomek Olszowski - Shooting Cars logotype">
     </router-link>
     <div class="to-header__nav">
       <nav class="nav nav--primary">
         <ul ref="navList">
           <li>
-            <router-link :to="{ name: 'home'}">Works</router-link>
+            <router-link
+              :to="{ name: 'home'}"
+              @click.native="resetPagePosition"
+            >
+              Works
+            </router-link>
           </li>
           <li>
-            <router-link :to="{ name: 'about'}">About</router-link>
+            <router-link
+              :to="{ name: 'about'}"
+            >
+              About
+            </router-link>
           </li>
           <li>
-            <router-link :to="{ name: 'contact'}">Contact</router-link>
+            <router-link
+              :to="{ name: 'contact'}"
+            >
+              Contact
+            </router-link>
           </li>
         </ul>
       </nav>
@@ -36,6 +49,14 @@
 </template>
 
 <script>
+  export default {
+    methods: {
+      resetPagePosition () {
+        let position = 0
+        this.$store.commit('SET_PAGE_POSITION', { data: position })
+      }
+    }
+  }
 </script>
 
 <style lang="scss">

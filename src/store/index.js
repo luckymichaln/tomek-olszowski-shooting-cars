@@ -1,12 +1,13 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
-import { apiSearchPostsCollection, apiSearchPost } from './api'
+import { apiSearchPostsCollection, apiSearchPost, apiSearchPage } from './api'
 
 Vue.use(Vuex)
 
 const state = {
   isContentLoaded: false,
   sessions: null,
+  about: null,
   singleSession: null,
   pagePosition: null,
   pageHeight: null
@@ -41,12 +42,32 @@ const actions = {
     } catch (error) {
       console.error(error, 'error from single session')
     }
+  },
+
+  async GET_ABOUT_PAGE ({state, commit}, {id}) {
+    commit('SET_CONTENT_LOADED', { data: false })
+    try {
+      const result = await apiSearchPage(id)
+
+      console.log(result, 'result about')
+
+      commit('SET_ABOUT_DATA', { data: result.data.acf.about })
+      commit('SET_CONTENT_LOADED', { data: true })
+
+      return result
+    } catch (error) {
+      console.error(error, 'error from about page')
+    }
   }
 }
 
 const mutations = {
   SET_SESSIONS (state, { data }) {
     state.sessions = data
+  },
+
+  SET_ABOUT_DATA (state, { data }) {
+    state.about = data
   },
 
   SET_CONTENT_LOADED (state, { data }) {
@@ -64,6 +85,7 @@ const mutations = {
 
 const getters = {
   isContentLoaded: state => state.isContentLoaded,
+  about: state => state.about,
   sessions (state) {
     return (state.sessions || []).map(el => {
       const { id } = el

@@ -1,6 +1,5 @@
 <template>
   <div class="to-gallery--fullscreen" :style="backgroundColor">
-    <!-- <p>{{ singleSession.title }}</p> -->
     <transition name="fade" mode="in-out">
       <to-gallery
         v-if="isContentLoaded" :gallery="singleSession.fullpagegallery"/>
