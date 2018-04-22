@@ -4,7 +4,6 @@
       class="to-gallery-block"
       v-for="(item, index) of content"
       :key="index">
-      <!-- <h1>{{ item.title }}</h1> -->
         <div
           v-for="(element, index) in item.gallery"
           :key="index"

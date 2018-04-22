@@ -32,9 +32,9 @@
     },
     methods: {
       closeGallery (event) {
-        if (event.keyCode === 27 || event.target.classList.contains('modal-close-trigger')) {
+        if (event.target.classList.contains('modal-close-trigger') || event.keyCode === 27) {
           this.$router.push('/')
-        } else if (event.target.nodeName.toUpperCase() !== 'IMG') {
+        } else if (event.target.nodeName.toUpperCase() !== 'IMG' && !event.keyCode) {
           this.$router.push('/')
         }
       }
