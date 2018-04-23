@@ -8,6 +8,7 @@ const state = {
   isContentLoaded: false,
   sessions: null,
   about: null,
+  contact: null,
   singleSession: null,
   pagePosition: null,
   pageHeight: null
@@ -58,6 +59,22 @@ const actions = {
     } catch (error) {
       console.error(error, 'error from about page')
     }
+  },
+
+  async GET_CONTACT_PAGE ({state, commit}, {id}) {
+    commit('SET_CONTENT_LOADED', { data: false })
+    try {
+      const result = await apiSearchPage(id)
+
+      console.log(result, 'result about')
+
+      commit('SET_CONTACT_DATA', { data: result.data.acf.contact })
+      commit('SET_CONTENT_LOADED', { data: true })
+
+      return result
+    } catch (error) {
+      console.error(error, 'error from about page')
+    }
   }
 }
 
@@ -68,6 +85,10 @@ const mutations = {
 
   SET_ABOUT_DATA (state, { data }) {
     state.about = data
+  },
+
+  SET_CONTACT_DATA (state, { data }) {
+    state.contact = data
   },
 
   SET_CONTENT_LOADED (state, { data }) {
@@ -86,6 +107,7 @@ const mutations = {
 const getters = {
   isContentLoaded: state => state.isContentLoaded,
   about: state => state.about,
+  contact: state => state.contact,
   sessions (state) {
     return (state.sessions || []).map(el => {
       const { id } = el
