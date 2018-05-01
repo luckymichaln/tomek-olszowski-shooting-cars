@@ -76,7 +76,7 @@
       display: flex;
       justify-content: space-between;
       width: 100%;
-      max-width: 960px;
+      max-width: 1030px;
       padding: 0 15px;
       margin: 0 auto;
     }
