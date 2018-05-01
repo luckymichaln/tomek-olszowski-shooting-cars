@@ -19,7 +19,6 @@ const actions = {
     commit('SET_CONTENT_LOADED', { data: false })
     try {
       const results = await apiSearchPostsCollection()
-      console.log(results, 'results')
 
       commit('SET_SESSIONS', { data: results.data })
       commit('SET_CONTENT_LOADED', { data: true })
@@ -126,7 +125,7 @@ const getters = {
     if (!state.singleSession) {
       return {}
     }
-    const { fullpagegallerybackgroundcolor, fullpagegallery, title } = state.singleSession.acf.session[0]
+    const { fullpagegallerybackgroundcolor, fullpagegallery, title, about } = state.singleSession.acf.session[0]
 
     return {
       fullpagegallerybackgroundcolor,
@@ -136,7 +135,8 @@ const getters = {
           url
         }
       }),
-      title
+      title,
+      about
     }
   },
   pagePosition: state => state.pagePosition

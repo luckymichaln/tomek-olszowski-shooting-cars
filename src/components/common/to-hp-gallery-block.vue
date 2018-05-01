@@ -62,7 +62,7 @@
 
   .to-gallery-block {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 93px;
 
     h1 {
       display: inline-block;

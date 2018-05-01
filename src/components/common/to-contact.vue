@@ -37,7 +37,7 @@
 
     methods: {
       websiteAddress (item) {
-        return `www.${item.website}`
+        return `http://www.${item.website}`
       }
     }
   }

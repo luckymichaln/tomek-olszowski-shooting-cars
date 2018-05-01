@@ -2,7 +2,11 @@
   <div class="to-gallery--fullscreen" :style="backgroundColor">
     <transition name="fade" mode="in-out">
       <to-gallery
-        v-if="isContentLoaded" :gallery="singleSession.fullpagegallery"/>
+        v-if="isContentLoaded"
+        :gallery="singleSession.fullpagegallery"
+        :title="singleSession.title"
+        :info="singleSession.about"
+      />
     </transition>
     <transition name="fade" mode="in-out">
       <div class="loader" v-if="!isContentLoaded"></div>
