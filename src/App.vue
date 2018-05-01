@@ -27,8 +27,10 @@
   }
 
   .loader {
-    position: absolute;
+    position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 100%;
@@ -37,8 +39,8 @@
     &::before {
       content: url('./assets/images/loader/loader.svg');
       position: absolute;
-      height: 60px;
-      width: 100px;
+      height: 25px;
+      width: 25px;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);

@@ -6,8 +6,8 @@
       class="to-gallery__img-wrapper"
     >
       <img
-      :src="img.url"
-      alt="lala">
+        :src="img.url"
+        alt="img">
     </div>
   </div>
 </template>

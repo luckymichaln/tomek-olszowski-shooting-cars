@@ -1,8 +1,6 @@
 <template>
   <header class="to-header box--width">
-    <router-link :to="{ name: 'home' }" class="main-logo" @click.native="resetPagePosition">
-      <img src="/src/assets/images/logo_main_new.svg" alt="Tomek Olszowski - Shooting Cars logotype">
-    </router-link>
+    <img src="/src/assets/images/logo_main_new.svg" alt="Tomek Olszowski - Shooting Cars logotype" class="main-logo">
     <div class="to-header__nav">
       <nav class="nav nav--primary">
         <ul ref="navList">
@@ -70,11 +68,8 @@
 
     .main-logo {
       margin-bottom: 35px;
-
-      img {
-        width: 290px;
-        height: 40px;
-      }
+      width: 270px;
+      height: 40px;
     }
 
     &__nav {
@@ -100,7 +95,7 @@
       }
 
       a {
-        font-size: 17px;
+        font-size: 18px;
         color: #000;
 
         &.router-link-exact-active {

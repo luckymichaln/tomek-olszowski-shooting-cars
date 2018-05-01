@@ -23,7 +23,7 @@
               :alignment="img.alignment"
               :alt="content[0].about.title"
             />
-            <div class="brick-info">{{ item.title }}</div>
+            <div class="brick-info"><span class="info--title">{{ item.title }}</span></div>
           </router-link>
         </div>
     </div>
@@ -58,6 +58,8 @@
 </script>
 
 <style lang="scss">
+  @import "./../../assets/styles/vars/_fonts";
+
   .to-gallery-block {
     width: 100%;
     margin-bottom: 30px;
@@ -70,7 +72,6 @@
         size: 38px;
         weight: 600;
       }
-
       color: rgba(0, 0, 0, 0.75);
     }
 
@@ -82,9 +83,19 @@
 
     &__brick {
       align-items: flex-start;
-      margin-bottom: 10px;
+      margin-bottom: 7px;
       position: relative;
       overflow: hidden;
+
+      &:hover {
+        .brick-info {
+          opacity: 1;
+        }
+
+        &::before {
+          opacity: 1;
+        }
+      }
 
       &.brick--bottom-align {
         align-self: flex-end;
@@ -94,13 +105,21 @@
         margin-right: 10px;
       }
 
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, .98);
+        opacity: 0;
+        transition: .3s;
+      }
+
       img {
         width: 100%;
         object-fit: contain;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        -webkit-perspective: 1000;
-        perspective: 1000;
         transition: .3s;
       }
 
@@ -111,10 +130,15 @@
         transform: translate(-50%, -50%);
         width: 100%;
         text-align: center;
-        font-size: 35px;
-        color: #fff;
+        font-size: 14px;
+        color: #000;
         opacity: 0;
-        transition: .05s;
+        transition: .3s;
+
+        .info--title {
+          font-family: $font-bold;
+          font-weight: 600;
+        }
       }
     }
   }

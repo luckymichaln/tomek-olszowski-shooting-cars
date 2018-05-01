@@ -8,7 +8,7 @@
         <p class="info-block__email">email: {{ contact[0].email }}</p>
         <p class="info-block__mobile">mobile: {{ contact[0].mobile }}</p>
         <p class="info-block__location">{{ contact[0].location }}</p>
-        <a :href="websiteAdress(contact[0])" target="_blank" class="info-block__website">www.{{ contact[0].website }}</a>
+        <a :href="websiteAddress(contact[0])" target="_blank" class="info-block__website">www.{{ contact[0].website }}</a>
       </div>
     </div>
     <div class="to-contact__secondary-info">
@@ -23,7 +23,7 @@
         <p class="info-block__email">email: {{ block.email }}</p>
         <p class="info-block__mobile">mobile: {{ block.mobile }}</p>
         <p class="info-block__location">{{ block.location }}</p>
-        <a :href="websiteAdress(block)" target="_blank" class="info-block__website">www.{{ block.website }}</a>
+        <a :href="websiteAddress(block)" target="_blank" class="info-block__website">www.{{ block.website }}</a>
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@
     },
 
     methods: {
-      websiteAdress (item) {
+      websiteAddress (item) {
         return `www.${item.website}`
       }
     }
@@ -45,7 +45,7 @@
 
 <style lang="scss">
   .to-contact {
-    padding: 90px 0 40px;
+    padding: 70px 0 40px;
 
     &__heading {
       margin-bottom: 40px;
@@ -54,7 +54,7 @@
     }
 
     &__main-info {
-      margin-bottom: 120px;
+      margin-bottom: 70px;
     }
 
     &__secondary-info {

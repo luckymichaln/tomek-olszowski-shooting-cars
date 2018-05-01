@@ -19,6 +19,7 @@ const actions = {
     commit('SET_CONTENT_LOADED', { data: false })
     try {
       const results = await apiSearchPostsCollection()
+      console.log(results, 'results')
 
       commit('SET_SESSIONS', { data: results.data })
       commit('SET_CONTENT_LOADED', { data: true })
@@ -52,7 +53,7 @@ const actions = {
 
       console.log(result, 'result about')
 
-      commit('SET_ABOUT_DATA', { data: result.data.acf.about })
+      commit('SET_ABOUT_DATA', { data: result.data.acf })
       commit('SET_CONTENT_LOADED', { data: true })
 
       return result
