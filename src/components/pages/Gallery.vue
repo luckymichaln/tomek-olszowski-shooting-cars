@@ -35,7 +35,7 @@
     },
     methods: {
       closeGallery (event) {
-        if (event.target.classList.contains('modal-close-trigger') || event.keyCode === 27) {
+        if (event.target.classList.contains('modal-close-trigger') || event.keyCode === 27 || event.target.classList.contains('to-gallery__img-wrapper')) {
           this.$router.push('/')
         } else if (event.target.nodeName.toUpperCase() !== 'IMG' && !event.keyCode) {
           this.$router.push('/')

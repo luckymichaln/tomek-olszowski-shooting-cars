@@ -23,7 +23,17 @@
               :alignment="img.alignment"
               :alt="content[0].about.title"
             />
-            <div class="brick-info"><span class="info--title">{{ item.title }}</span></div>
+            <div class="brick-info">
+              <span class="info__title">{{ item.title }}</span>
+              <div
+                class="info-block"
+                v-for="(aboutBlock, index) in item.about"
+                :key="index"
+              >
+                <span>{{ aboutBlock.label }}: </span>
+                <span>{{ aboutBlock.info }}</span>
+              </div>
+            </div>
           </router-link>
         </div>
     </div>
@@ -133,11 +143,17 @@
         font-size: 14px;
         color: #000;
         opacity: 0;
+        font-size: 14px;
+        line-height: 1.3;
         transition: .3s;
 
-        .info--title {
+        .info__title {
           font-family: $font-bold;
           font-weight: 600;
+        }
+
+        .info-block {
+          margin-top: 2px;
         }
       }
     }

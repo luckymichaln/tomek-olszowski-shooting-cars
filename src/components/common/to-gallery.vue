@@ -45,7 +45,10 @@ export default {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    padding: 50px 0 300px;
+
+    &--fullscreen {
+      padding: 50px 0 300px;
+    }
 
     &__info {
       display: flex;
@@ -78,13 +81,14 @@ export default {
     }
 
     &__img-wrapper {
+      display: flex;
+      justify-content: center;
       height: calc(100vh - 20px);
       width: 100%;
       max-width: calc(100vw - 40px);
       margin-bottom: 50px;
 
       img {
-        width: 100%;
         height: 100%;
         object-fit: contain;
       }
