@@ -14,6 +14,7 @@
             :to="`/${item.id}/${item.slug}`"
             :class="brickClass(img)"
             :style="brickStyles(img)"
+            v-lazy="img.src"
             @click.native="setPagePosition"
           >
             <img
@@ -115,16 +116,38 @@
         margin-right: 10px;
       }
 
-      &::before {
+      &::before,
+      &::after {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
+      }
+
+      &::before {
         background-color: rgba(255, 255, 255, .98);
         opacity: 0;
         transition: .3s;
+      }
+
+      &::after {
+        z-index: 100;
+        background-color: #fff;
+        transition: 1s;
+      }
+
+      &[lazy=loading] {
+        &::after  {
+          opacity: 1;
+        }
+      }
+
+      &[lazy=loaded] {
+        &::after {
+          opacity: 0;
+        }
       }
 
       img {

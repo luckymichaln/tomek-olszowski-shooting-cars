@@ -4,9 +4,11 @@
       v-for="(img, index) in gallery"
       :key="index"
       class="to-gallery__img-wrapper"
+      v-lazy="img.url"
     >
+      <div class="to-gallery__lazy-loader" v-lazy="img.url" :style="lazyLoaderStyle"/>
       <img
-        :src="img.url"
+        :srcset="img.url"
         alt="img">
     </div>
     <div class="to-gallery__info">
@@ -25,19 +27,28 @@
   </div>
 </template>
 <script>
-export default {
-  props: {
-    gallery: {
-      type: Array,
-      default: () => []
+  import { mapGetters } from 'vuex'
+
+  export default {
+    props: {
+      gallery: {
+        type: Array,
+        default: () => []
+      },
+      info: {
+        type: Array,
+        default: () => []
+      },
+      title: String
     },
-    info: {
-      type: Array,
-      default: () => []
-    },
-    title: String
+
+    computed: {
+      ...mapGetters(['singleSession']),
+      lazyLoaderStyle () {
+        return `background-color: ${this.singleSession.fullpagegallerybackgroundcolor}`
+      }
+    }
   }
-}
 </script>
 
 <style lang="scss">
@@ -80,15 +91,33 @@ export default {
       margin-top: 10px;
     }
 
+    &__lazy-loader {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      width: 100%;
+      height: 100%;
+      transition: 1s;
+
+      &[lazy="loaded"] {
+        opacity: 0;
+        z-index: -10;
+      }
+    }
+
     &__img-wrapper {
       display: flex;
       justify-content: center;
+      position: relative;
       height: calc(100vh - 60px);
       width: 100%;
       max-width: calc(100vw - 40px);
       margin-bottom: 50px;
 
       img {
+        position: relative;
+        z-index: 10;
         height: 100%;
         object-fit: contain;
       }
