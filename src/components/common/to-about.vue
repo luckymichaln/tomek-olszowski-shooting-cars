@@ -8,7 +8,7 @@
       <p class="info-block__title">{{ about.work[0].title }}</p>
       <div class="info-block__about" v-html="about.work[0].about"></div>
     </div>
-    <div class="info-block info-block__image">
+    <div class="info-block info-block__image" v-lazy="about.photo[0].picture">
       <img :src="about.photo[0].picture" alt="Tomek Olszowski - Automotive Photographer" class="info-image" />
       <div class="info-block__about" v-html="about.photo[0].description"></div>
     </div>
@@ -39,6 +39,28 @@
       &__title {
         margin-bottom: 40px;
         font-weight: 600;
+      }
+
+      &__image {
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 100;
+          background-color: #fff;
+          transition: 1s;
+        }
+
+        &[lazy=loaded] {
+          &::after {
+            opacity: 0;
+          }
+        }
       }
 
       &:not(.info-block__image) {
