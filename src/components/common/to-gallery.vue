@@ -83,7 +83,7 @@ export default {
     &__img-wrapper {
       display: flex;
       justify-content: center;
-      height: calc(100vh - 20px);
+      height: calc(100vh - 60px);
       width: 100%;
       max-width: calc(100vw - 40px);
       margin-bottom: 50px;
