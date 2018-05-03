@@ -109,17 +109,20 @@ const getters = {
   about: state => state.about,
   contact: state => state.contact,
   sessions (state) {
-    return (state.sessions || []).map(el => {
+    let arr = (state.sessions || []).map(el => {
       const { id } = el
-      const { slug, title, about, gallery } = el.acf.session[0]
+      const { slug, title, about, gallery, placement } = el.acf.session[0]
       return {
         title,
         about,
         gallery,
         slug,
+        placement: parseInt(placement),
         id
       }
     })
+
+    return arr.sort((a, b) => a.placement - b.placement)
   },
   singleSession (state) {
     if (!state.singleSession) {

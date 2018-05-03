@@ -39,6 +39,8 @@
           body.style.height = 'auto'
         }, 1000)
       }
+
+      console.log(this.sessions, 'sessions')
     },
 
     components: {
