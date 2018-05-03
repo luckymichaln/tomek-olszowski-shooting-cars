@@ -110,9 +110,10 @@
       display: flex;
       justify-content: center;
       position: relative;
-      height: calc(100vh - 60px);
+      height: calc(100vh - 100px);
       width: 100%;
-      max-width: calc(100vw - 40px);
+      max-width: 1600px;
+      padding: 0 50px;
       margin-bottom: 50px;
 
       img {
