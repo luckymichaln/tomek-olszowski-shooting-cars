@@ -28,10 +28,6 @@
       ...mapGetters(['about', 'isContentLoaded'])
     },
 
-    mounted () {
-      console.log(this.about, 'about in component')
-    },
-
     components: {
       toHeader,
       toAbout

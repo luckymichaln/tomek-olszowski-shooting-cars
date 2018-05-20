@@ -40,15 +40,15 @@
           </li>
         </ul>
       </nav>
-      <nav class="nav nav--social">
+      <nav class="nav nav--external-portfolio">
         <ul>
           <li @click="closeMobileMenu">
-            <a href="https://www.instagram.com/tomekolszowski/" target="_blank" class="link-instagram">
+            <a href="https://www.instagram.com/tomekolszowski/" target="_blank" class="link-insta">
               <img src="/src/assets/images/logo-instagram.svg" alt="Tomek Olszowski - Shooting Cars logotype">
             </a>
           </li>
           <li @click="closeMobileMenu">
-            <a href="https://www.behance.net/tomekolszowski" target="_blank" class="link-behance">
+            <a href="https://www.behance.net/tomekolszowski" target="_blank" class="link-behan">
               <img src="/src/assets/images/logo-behance.svg" alt="Tomek Olszowski - Shooting Cars logotype">
             </a>
           </li>
@@ -120,12 +120,16 @@
         this.closeMobileMenu()
       },
 
-      frizeMobileScreen (b) {
-        if (this.isMobileMenuOpen) {
+      frizeMobileScreen (b, h, a) {
+        if (this.isMobileMenuOpen && (window.innerWidth < 768)) {
           b.style.overflow = 'hidden'
+          h.style.overflow = 'hidden'
+          a.style.overflow = 'hidden'
           b.style.height = '100vh'
-        } else {
+        } else if (!this.isMobileMenuOpen && (window.innerWidth < 768)) {
           b.style.overflow = 'unset'
+          h.style.overflow = 'unset'
+          a.style.overflow = 'unset'
           b.style.height = 'unset'
         }
       }
@@ -134,8 +138,9 @@
     watch: {
       isMobileMenuOpen () {
         let body = document.getElementsByTagName('body')[0]
-        this.frizeMobileScreen(body)
-        console.log(this.isMobileMenuOpen, 'is mobile menu open')
+        let html = document.getElementsByTagName('html')[0]
+        let app = document.getElementById('app')
+        this.frizeMobileScreen(body, html, app)
       }
     }
   }
@@ -303,7 +308,7 @@
         }
       }
 
-      &--social {
+      &--external-portfolio {
         ul {
           flex-flow: row nowrap;
           align-items: flex-end;
@@ -326,7 +331,7 @@
         }
       }
 
-      .link-behance img {
+      .link-behan img {
         position: relative;
         top: 6px;
         height: 31px;
@@ -338,7 +343,7 @@
         }
       }
 
-      .link-instagram img {
+      .link-insta img {
         position: relative;
         top: 6px;
         height: 21px;
