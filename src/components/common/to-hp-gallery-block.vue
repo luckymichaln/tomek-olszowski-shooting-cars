@@ -6,36 +6,95 @@
       :key="index">
         <div
           v-for="(element, index) in item.gallery"
-          :key="index"
-          class="to-gallery-block__row">
-          <router-link
+          :key="index + 'desktop'"
+          class="to-gallery-block__row"
+        >
+          <div
             v-for="(img, index) in element.row"
             :key="index"
-            :to="`/${item.id}/${item.slug}`"
+            class="brick-wrapper"
             :class="brickClass(img)"
             :style="brickStyles(img)"
-            v-lazy="img.src"
-            @click.native="setPagePosition"
           >
-            <img
-              v-if="!img.isEmpty"
-              :key="index"
-              :srcset="img.src"
-              :alignment="img.alignment"
-              :alt="content[0].about.title"
-            />
-            <div class="brick-info">
-              <span class="info__title">{{ item.title }}</span>
-              <div
-                class="info-block"
-                v-for="(aboutBlock, index) in item.about"
+            <router-link
+              v-if="item.fullpagegallery"
+              :to="`/${item.id}/${item.slug}`"
+              v-lazy="img.src"
+              @click.native="setPagePosition"
+            >
+              <img
+                v-if="!img.isEmpty"
                 :key="index"
-              >
-                <span>{{ aboutBlock.label }}: </span>
-                <span>{{ aboutBlock.info }}</span>
+                :srcset="img.src"
+                :alignment="img.alignment"
+                :alt="content[0].about.title"
+              />
+              <div class="brick-info">
+                <span class="info__title">{{ item.title }}</span>
+                <div
+                  class="info-block"
+                  v-for="(aboutBlock, index) in item.about"
+                  :key="index"
+                >
+                  <span>{{ aboutBlock.label }}: </span>
+                  <span>{{ aboutBlock.info }}</span>
+                </div>
               </div>
+            </router-link>
+            <span
+              v-else
+              class="brick-nolink"
+              v-lazy="img.src"
+            >
+              <img
+                v-if="!img.isEmpty"
+                :key="index"
+                :srcset="img.src"
+                :alignment="img.alignment"
+                :alt="content[0].about.title"
+              />
+              <div class="brick-info">
+                <span class="info__title">{{ item.title }}</span>
+                <div
+                  class="info-block"
+                  v-for="(aboutBlock, index) in item.about"
+                  :key="index"
+                >
+                  <span>{{ aboutBlock.label }}: </span>
+                  <span>{{ aboutBlock.info }}</span>
+                </div>
+              </div>
+            </span>
+          </div>
+        </div>
+        <div class="to-gallery-block__row--mobile-wrapper">
+          <div
+            v-for="(element, index) in item.mobilegallery"
+            :key="index + 'mobile'"
+            class="to-gallery-block__row--mobile"
+            @click="showMobileContent"
+            v-lazy="element.url">
+            <img
+              v-if="index === 0"
+              :index="index"
+              :src="element.url"/>
+            <img
+              v-if="mobileContentVisible && index > 0"
+              :index="index"
+              :src="element.url"/>
+          </div>
+          <div class="row-mobile__info" v-if="mobileContentVisible">
+            <span class="info__title">{{ item.title }}</span>
+            <div
+              class="info-block"
+              v-for="(aboutBlock, index) in item.about"
+              v-if="item.about"
+              :key="index"
+            >
+              <span>{{ aboutBlock.label }}: </span>
+              <span>{{ aboutBlock.info }}</span>
             </div>
-          </router-link>
+          </div>
         </div>
     </div>
   </div>
@@ -45,6 +104,12 @@
   export default {
     props: {
       content: Array
+    },
+
+    data () {
+      return {
+        mobileContentVisible: false
+      }
     },
 
     methods: {
@@ -63,6 +128,11 @@
       setPagePosition () {
         let position = window.scrollY
         this.$store.commit('SET_PAGE_POSITION', { data: position })
+      },
+
+      showMobileContent () {
+        this.mobileContentVisible = true
+        console.log(this.mobileContentVisible, 'this.mobileContentVisible')
       }
     }
   }
@@ -70,85 +140,144 @@
 
 <style lang="scss">
   @import "./../../assets/styles/vars/_fonts";
+  @import "./../../assets/styles/helpers/_breakpoints";
 
   .to-gallery-block {
     width: 100%;
     margin-bottom: 93px;
 
-    h1 {
-      display: inline-block;
-      padding: 0 12% 10px 0;
-      margin-bottom: 20px;
-      font: {
-        size: 38px;
-        weight: 600;
-      }
-      color: rgba(0, 0, 0, 0.75);
-    }
-
     &__row {
       display: flex;
       flex-wrap: nowrap;
       align-items: flex-start;
+      margin: 0 -5px;
+      padding: 0 5px;
+
+      &--mobile {
+        display: none;
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 90;
+          width: 100%;
+          height: 100%;
+          background-color: #fff;
+          transition: 1s;
+        }
+
+        &[lazy=loading] {
+          &::before  {
+            opacity: 1;
+          }
+        }
+
+        &[lazy=loaded] {
+          &::before {
+            opacity: 0;
+          }
+        }
+
+        @include media(mobile) {
+          display: block;
+          margin-bottom: 13px;
+          text-align: center;
+        }
+
+        &-wrapper {
+          display: none;
+          text-align: center;
+          font-size: 17px;
+          color: #000;
+          // opacity: 0;
+          font-size: 14px;
+          line-height: 1.3;
+          transition: .3s;
+
+          .info__title {
+            font-family: $font-bold;
+            font-weight: 600;
+          }
+
+          .info-block {
+            margin-top: 2px;
+          }
+
+          @include media(mobile) {
+            display: block;
+          }
+        }
+      }
+
+      @include media(mobile) {
+        display: none;
+      }
     }
 
     &__brick {
       align-items: flex-start;
-      margin-bottom: 7px;
       position: relative;
       overflow: hidden;
-
-      &:hover {
-        .brick-info {
-          opacity: 1;
-        }
-
-        &::before {
-          opacity: 1;
-        }
-      }
 
       &.brick--bottom-align {
         align-self: flex-end;
       }
 
-      &:not(:last-child) {
-        margin-right: 10px;
-      }
-
-      &::before,
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
+      a,
+      .brick-nolink {
+        position: relative;
+        display: block;
         height: 100%;
-      }
+        width: 100%;
 
-      &::before {
-        background-color: rgba(255, 255, 255, .98);
-        opacity: 0;
-        transition: .3s;
-      }
-
-      &::after {
-        z-index: 100;
-        background-color: #fff;
-        transition: 1s;
-      }
-
-      &[lazy=loading] {
-        &::after  {
-          opacity: 1;
-        }
-      }
-
-      &[lazy=loaded] {
+        &::before,
         &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        &::before {
+          background-color: rgba(255, 255, 255, .98);
           opacity: 0;
+          transition: .3s;
+        }
+
+        &::after {
+          z-index: 100;
+          background-color: #fff;
+          transition: 1s;
+        }
+
+        &[lazy=loading] {
+          &::after  {
+            opacity: 1;
+          }
+        }
+
+        &[lazy=loaded] {
+          &::after {
+            opacity: 0;
+          }
+        }
+
+        &:hover {
+          .brick-info {
+            opacity: 1;
+          }
+
+          &::before {
+            opacity: 1;
+          }
         }
       }
+
 
       img {
         width: 100%;
@@ -179,6 +308,15 @@
           margin-top: 2px;
         }
       }
+    }
+
+    .brick-wrapper {
+      margin: 0 0 7px;
+      padding: 0 5px;
+    }
+
+    @include media(mobile) {
+      margin-bottom: 43px;
     }
   }
 </style>

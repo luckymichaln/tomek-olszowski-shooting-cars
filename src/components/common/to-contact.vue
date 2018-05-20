@@ -44,6 +44,8 @@
 </script>
 
 <style lang="scss">
+  @import "./../../assets/styles/helpers/_breakpoints";
+
   .to-contact {
     padding: 70px 0 40px;
 
@@ -51,18 +53,32 @@
       margin-bottom: 40px;
       font-size: 14px;
       font-weight: 600;
+
+      @include media(mobile) {
+        font-size: 17px;
+      }
     }
 
     &__main-info {
       margin-bottom: 70px;
+
+      @include media(mobile) {
+        margin-bottom: 40px;
+      }
     }
 
     &__secondary-info {
       display: flex;
       justify-content: space-between;
+
+      @include media(mobile) {
+        flex-flow: column nowrap;
+      }
     }
 
     .info-block {
+      width: calc((100% / 3) - 10px);
+      padding-right: 45px;
       line-height: 1.3;
       font-size: 14px;
 
@@ -76,6 +92,12 @@
         margin-top: 22px;
         text-decoration: none;
         color: #000;
+      }
+
+      @include media(mobile) {
+        width: 100%;
+        margin-bottom: 40px;
+        font-size: 17px;
       }
     }
   }

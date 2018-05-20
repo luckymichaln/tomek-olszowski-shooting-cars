@@ -19,13 +19,14 @@ const actions = {
     commit('SET_CONTENT_LOADED', { data: false })
     try {
       const results = await apiSearchPostsCollection()
+      console.log(results, 'results')
 
       commit('SET_SESSIONS', { data: results.data })
       commit('SET_CONTENT_LOADED', { data: true })
 
       return results
     } catch (error) {
-      console.error(error, 'error from hp sessions')
+      console.error('error from hp sessions', { error })
     }
   },
 
@@ -41,7 +42,7 @@ const actions = {
 
       return result
     } catch (error) {
-      console.error(error, 'error from single session')
+      console.error('error from single session', { error })
     }
   },
 
@@ -57,7 +58,7 @@ const actions = {
 
       return result
     } catch (error) {
-      console.error(error, 'error from about page')
+      console.error('error from about page', { error })
     }
   },
 
@@ -111,18 +112,20 @@ const getters = {
   sessions (state) {
     let arr = (state.sessions || []).map(el => {
       const { id } = el
-      const { slug, title, about, gallery, placement } = el.acf.session[0]
+      const { slug, title, about, gallery, placement, mobilegallery, fullpagegallery } = el.acf.session[0]
       return {
         title,
         about,
         gallery,
+        mobilegallery,
+        fullpagegallery,
         slug,
         placement: parseInt(placement),
         id
       }
     })
 
-    return arr.sort((a, b) => a.placement - b.placement)
+    return arr.sort((a, b) => b.placement - a.placement)
   },
   singleSession (state) {
     if (!state.singleSession) {
@@ -130,16 +133,20 @@ const getters = {
     }
     const { fullpagegallerybackgroundcolor, fullpagegallery, title, about } = state.singleSession.acf.session[0]
 
-    return {
-      fullpagegallerybackgroundcolor,
-      fullpagegallery: fullpagegallery.map(el => {
-        const { url } = el
-        return {
-          url
-        }
-      }),
-      title,
-      about
+    if (fullpagegallery) {
+      return {
+        fullpagegallerybackgroundcolor,
+        fullpagegallery: fullpagegallery.map(el => {
+          const { url } = el
+          return {
+            url
+          }
+        }),
+        title,
+        about: about || []
+      }
+    } else {
+      return []
     }
   },
   pagePosition: state => state.pagePosition

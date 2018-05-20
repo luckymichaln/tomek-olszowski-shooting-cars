@@ -24,6 +24,8 @@
 </script>
 
 <style lang="scss">
+  @import "./../../assets/styles/helpers/_breakpoints";
+
   .to-about {
     display: flex;
     justify-content: space-between;
@@ -65,11 +67,26 @@
 
       &:not(.info-block__image) {
         padding-right: 45px;
+
+        @include media(mobile) {
+          padding: 0;
+        }
       }
 
       .info-image {
         margin-bottom: 40px;
       }
+
+      @include media(mobile) {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 40px;
+        font-size: 17px;
+      }
+    }
+
+    @include media(mobile) {
+      flex-flow: column nowrap;
     }
   }
 </style>
