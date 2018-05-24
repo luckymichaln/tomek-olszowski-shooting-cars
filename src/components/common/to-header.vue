@@ -122,15 +122,19 @@
 
       frizeMobileScreen (b, h, a) {
         if (this.isMobileMenuOpen && (window.innerWidth < 768)) {
-          b.style.overflow = 'hidden'
-          h.style.overflow = 'hidden'
-          a.style.overflow = 'hidden'
-          b.style.height = '100vh'
+          // setTimeout( () => {
+            b.style.overflow = 'hidden'
+            h.style.overflow = 'hidden'
+            a.style.overflow = 'hidden'
+          // }, 350)
+          // b.style.height = '100vh'
         } else if (!this.isMobileMenuOpen && (window.innerWidth < 768)) {
           b.style.overflow = 'unset'
           h.style.overflow = 'unset'
           a.style.overflow = 'unset'
-          b.style.height = 'unset'
+          // setTimeout( () => {
+            // b.style.height = 'unset'
+          // }, 350)
         }
       }
     },
