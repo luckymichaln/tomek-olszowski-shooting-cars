@@ -42,6 +42,12 @@
       title: String
     },
 
+    mounted () {
+      if (window.innerWidth <= 768) {
+        this.$router.push('/')
+      }
+    },
+
     computed: {
       ...mapGetters(['singleSession']),
       lazyLoaderStyle () {
