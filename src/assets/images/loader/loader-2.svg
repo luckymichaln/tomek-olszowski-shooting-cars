@@ -1,0 +1,104 @@
+<svg version="1.1" id="H1u44L41X" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 330 414" enable-background="new 0 0 330.769 414.792" xml:space="preserve"><style type="text/css">@-webkit-keyframes Hy-uNEU4y7_Animation {
+    0% {
+        opacity: 1
+    }
+    20% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0
+    }
+}
+@keyframes Hy-uNEU4y7_Animation {
+    0% {
+        opacity: 1
+    }
+    20% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0
+    }
+}
+@-webkit-keyframes Hy-uNEU4y7_BychaUEy7_Animation {
+    0% {
+        -webkit-transform: scale(0.08, 0.08);
+                transform: scale(0.08, 0.08)
+    }
+    100% {
+        -webkit-transform: scale(0.18, 0.18);
+                transform: scale(0.18, 0.18)
+    }
+}
+@keyframes Hy-uNEU4y7_BychaUEy7_Animation {
+    0% {
+        -webkit-transform: scale(0.08, 0.08);
+                transform: scale(0.08, 0.08)
+    }
+    100% {
+        -webkit-transform: scale(0.18, 0.18);
+                transform: scale(0.18, 0.18)
+    }
+}
+@-webkit-keyframes Hy-uNEU4y7_BkWjaI4Jm_Animation {
+    0% {
+        -webkit-transform: translate(0px, -2px);
+                transform: translate(0px, -2px)
+    }
+    100% {
+        -webkit-transform: translate(0px, -2px);
+                transform: translate(0px, -2px)
+    }
+}
+@keyframes Hy-uNEU4y7_BkWjaI4Jm_Animation {
+    0% {
+        -webkit-transform: translate(0px, -2px);
+                transform: translate(0px, -2px)
+    }
+    100% {
+        -webkit-transform: translate(0px, -2px);
+                transform: translate(0px, -2px)
+    }
+}
+#H1u44L41X * {
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-timing-function: cubic-bezier(0, 0, 1, 1);
+            animation-timing-function: cubic-bezier(0, 0, 1, 1)
+}
+#Hy-uNEU4y7_BkWjaI4Jm {
+    -webkit-animation-name: Hy-uNEU4y7_BkWjaI4Jm_Animation;
+            animation-name: Hy-uNEU4y7_BkWjaI4Jm_Animation;
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    transform-box: fill-box;
+    -webkit-transform: translate(0px, -2px);
+            transform: translate(0px, -2px)
+}
+#Hy-uNEU4y7_BychaUEy7 {
+    -webkit-animation-name: Hy-uNEU4y7_BychaUEy7_Animation;
+            animation-name: Hy-uNEU4y7_BychaUEy7_Animation;
+    -webkit-animation-timing-function: cubic-bezier(0.42, 0, 1, 1);
+            animation-timing-function: cubic-bezier(0.42, 0, 1, 1);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    transform-box: fill-box;
+    -webkit-transform: scale(0.08, 0.08);
+            transform: scale(0.08, 0.08)
+}
+#Hy-uNEU4y7 {
+    -webkit-animation-name: Hy-uNEU4y7_Animation;
+            animation-name: Hy-uNEU4y7_Animation;
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    transform-box: fill-box;
+    opacity: 1;
+    -webkit-animation-timing-function: cubic-bezier(0, 0, 0.58, 1);
+            animation-timing-function: cubic-bezier(0, 0, 0.58, 1)
+}</style><style/>
+<g id="Bygu4NINym">
+	<g id="Hy-uNEU4y7_BkWjaI4Jm" data-animator-group="true" data-animator-type="0"><g id="Hy-uNEU4y7_BychaUEy7" data-animator-group="true" data-animator-type="2"><path d="M8.507,8.876h313.44v97.42H219.519l3.762,304.222H112.406l-1.197-304.222H8.507V8.876z" id="Hy-uNEU4y7"/></g></g>
+</g>
+<script>(function(){var a=document.querySelector('#H1u44L41X'),b=a.querySelectorAll('style'),c=function(d){b.forEach(function(f){var g=f.textContent;g&amp;&amp;(f.textContent=g.replace(/transform-box:[^;\r\n]*/gi,'transform-box: '+d))})};c('initial'),window.requestAnimationFrame(function(){return c('fill-box')})})();</script></svg>

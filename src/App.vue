@@ -37,12 +37,12 @@
     background-color: #fff;
 
     &::before {
-      content: url('./assets/images/loader/loader.svg');
+      content: url('./assets/images/loader/loader-2.svg');
       position: absolute;
-      height: 25px;
-      width: 25px;
       top: 50%;
       left: 50%;
+      width: 265px;
+      z-index: 9999;
       transform: translate(-50%, -50%);
     }
   }

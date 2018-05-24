@@ -68,22 +68,7 @@
           </div>
         </div>
         <div class="to-gallery-block__row--mobile-wrapper">
-          <div
-            v-for="(element, index) in item.mobilegallery"
-            :key="index + 'mobile'"
-            class="to-gallery-block__row--mobile"
-            @click="showMobileContent"
-            v-lazy="element.url">
-            <img
-              v-if="index === 0"
-              :index="index"
-              :src="element.url"/>
-            <img
-              v-if="mobileContentVisible && index > 0"
-              :index="index"
-              :src="element.url"/>
-          </div>
-          <div class="row-mobile__info" v-if="mobileContentVisible">
+          <div class="row-mobile__info">
             <span class="info__title">{{ item.title }}</span>
             <div
               class="info-block"
@@ -95,6 +80,14 @@
               <span>{{ aboutBlock.info }}</span>
             </div>
           </div>
+          <div
+            v-for="(element, index) in item.mobilegallery"
+            :key="index + 'mobile'"
+            class="to-gallery-block__row--mobile"
+            v-lazy="element.url">
+            <img
+              :src="element.url"/>
+          </div>
         </div>
     </div>
   </div>
@@ -104,12 +97,6 @@
   export default {
     props: {
       content: Array
-    },
-
-    data () {
-      return {
-        mobileContentVisible: false
-      }
     },
 
     methods: {
@@ -128,11 +115,6 @@
       setPagePosition () {
         let position = window.scrollY
         this.$store.commit('SET_PAGE_POSITION', { data: position })
-      },
-
-      showMobileContent () {
-        this.mobileContentVisible = true
-        console.log(this.mobileContentVisible, 'this.mobileContentVisible')
       }
     }
   }
@@ -192,7 +174,6 @@
           text-align: center;
           font-size: 17px;
           color: #000;
-          // opacity: 0;
           font-size: 14px;
           line-height: 1.3;
           transition: .3s;
@@ -313,6 +294,11 @@
     .brick-wrapper {
       margin: 0 0 7px;
       padding: 0 5px;
+    }
+
+    .row-mobile__info {
+      margin-bottom: 20px;
+      font-size: 17px;
     }
 
     @include media(mobile) {

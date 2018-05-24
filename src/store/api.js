@@ -5,7 +5,7 @@ import VueAxios from 'vue-axios'
 Vue.use(VueAxios, axios)
 
 export const apiSearchPostsCollection = () =>
-  axios.get('http://tom.stronazen.pl/wp-json/acf/v3/posts')
+  axios.get('http://tom.stronazen.pl/wp-json/acf/v3/posts?per_page=80')
     .then(response => response)
 
 export const apiSearchPost = (id) =>
