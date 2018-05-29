@@ -45,9 +45,7 @@
         if (this.pagePosition) {
           body.style.height = `${pageHeight}px`
 
-          // setTimeout(() => {
           window.scrollTo(0, this.pagePosition)
-          // }, 100)
 
           setTimeout(() => {
             body.style.height = 'auto'
