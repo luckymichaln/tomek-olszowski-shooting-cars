@@ -20,8 +20,10 @@
 
   export default {
     created () {
-      const id = this.$route.params.id
-      this.$store.dispatch('GET_SINGLE_SESSION', {id})
+      if (this.singleSession) {
+        const id = this.$route.params.id
+        this.$store.dispatch('GET_SINGLE_SESSION', {id})
+      }
     },
     mounted () {
       document.addEventListener('keydown', this.closeGallery)
