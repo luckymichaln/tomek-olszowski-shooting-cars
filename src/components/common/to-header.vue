@@ -230,7 +230,7 @@
       display: flex;
       justify-content: space-between;
       width: 100%;
-      max-width: 1020px;
+      max-width: 1090px;
       padding: 0 15px;
       margin: 0 auto;
 
