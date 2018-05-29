@@ -27,7 +27,6 @@
     },
 
     mounted () {
-      console.dir(document.getElementsByTagName('body')[0])
       this.setActiveSessionPosition()
     },
 
@@ -35,8 +34,6 @@
       setTopPosition () {
         if (!this.pageHeight) {
           window.scrollTo(0, 0)
-          console.log(this.pageHeight)
-          console.log('setTopPosition')
         }
       },
 
@@ -46,19 +43,16 @@
         let pageHeight = parseInt(height) + 1000
 
         if (this.pagePosition) {
-          console.log(this.pagePosition, 'this.pagePosition')
           body.style.height = `${pageHeight}px`
 
-          setTimeout(() => {
-            window.scrollTo(0, this.pagePosition)
-          }, 100)
+          // setTimeout(() => {
+          window.scrollTo(0, this.pagePosition)
+          // }, 100)
 
           setTimeout(() => {
             body.style.height = 'auto'
           }, 1000)
-          console.log('setActiveSessionPosition')
         }
-        console.log(this.pagePosition, 'position been set')
       }
     },
 
