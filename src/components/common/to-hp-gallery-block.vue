@@ -147,7 +147,7 @@
           z-index: 90;
           width: 100%;
           height: 100%;
-          background-color: #fff;
+          background-color: darken(#fff, 2);
           transition: 1s;
         }
 
@@ -232,7 +232,7 @@
 
         &::after {
           z-index: 100;
-          background-color: #fff;
+          background-color: darken(#fff, 2);
           transition: 1s;
         }
 
