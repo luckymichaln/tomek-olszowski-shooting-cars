@@ -20,8 +20,10 @@
 
   export default {
     created () {
-      const id = 2
-      this.$store.dispatch('GET_ABOUT_PAGE', { id })
+      if (!this.about) {
+        const id = 2
+        this.$store.dispatch('GET_ABOUT_PAGE', { id })
+      }
     },
 
     computed: {

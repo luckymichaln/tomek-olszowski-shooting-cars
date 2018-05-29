@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="setAppClass">
+  <div id="app" :class="appClass">
     <transition name="fade" mode="out-in">
       <router-view></router-view>
     </transition>
@@ -10,7 +10,7 @@
   export default {
     name: 'app',
     computed: {
-      setAppClass () {
+      appClass () {
         return {
           'app': true
         }

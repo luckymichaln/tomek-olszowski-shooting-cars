@@ -20,8 +20,10 @@
 
   export default {
     created () {
-      const id = 186
-      this.$store.dispatch('GET_CONTACT_PAGE', { id })
+      if (!this.contact) {
+        const id = 186
+        this.$store.dispatch('GET_CONTACT_PAGE', { id })
+      }
     },
 
     computed: {

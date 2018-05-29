@@ -2,7 +2,7 @@
   <div>
     <to-header />
     <div class="box main">
-      <transition name="fade" mode="out-in">
+      <transition name="fade" mode="out-in" @before-enter="setTopPosition">
         <to-hp-gallery-block v-if="isContentLoaded" :content="sessions"/>
         <div class="loader" v-if="!isContentLoaded"/>
       </transition>
@@ -17,7 +17,9 @@
 
   export default {
     created () {
-      this.$store.dispatch('GET_HP_SESSIONS')
+      if (!this.sessions || !this.sessions.length) {
+        this.$store.dispatch('GET_HP_SESSIONS')
+      }
     },
 
     computed: {
@@ -25,20 +27,38 @@
     },
 
     mounted () {
-      if (this.pagePosition) {
+      console.dir(document.getElementsByTagName('body')[0])
+      this.setActiveSessionPosition()
+    },
+
+    methods: {
+      setTopPosition () {
+        if (!this.pageHeight) {
+          window.scrollTo(0, 0)
+          console.log(this.pageHeight)
+          console.log('setTopPosition')
+        }
+      },
+
+      setActiveSessionPosition () {
         let body = document.getElementsByTagName('body')[0]
         let height = `${this.pagePosition}`
         let pageHeight = parseInt(height) + 1000
 
-        body.style.height = `${pageHeight}px`
+        if (this.pagePosition) {
+          console.log(this.pagePosition, 'this.pagePosition')
+          body.style.height = `${pageHeight}px`
 
-        setTimeout(() => {
-          window.scrollTo(0, this.pagePosition)
-        }, 100)
+          setTimeout(() => {
+            window.scrollTo(0, this.pagePosition)
+          }, 100)
 
-        setTimeout(() => {
-          body.style.height = 'auto'
-        }, 1000)
+          setTimeout(() => {
+            body.style.height = 'auto'
+          }, 1000)
+          console.log('setActiveSessionPosition')
+        }
+        console.log(this.pagePosition, 'position been set')
       }
     },
 
