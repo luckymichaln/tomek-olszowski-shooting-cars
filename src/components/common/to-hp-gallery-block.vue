@@ -225,7 +225,8 @@
         }
 
         &::before {
-          background-color: rgba(255, 255, 255, .98);
+          height: calc(100% - 3px);
+          background-color: rgba(#000, .5);
           opacity: 0;
           transition: .3s;
         }
@@ -274,7 +275,7 @@
         width: 100%;
         text-align: center;
         font-size: 14px;
-        color: #000;
+        color: #dbdbdb;
         opacity: 0;
         font-size: 14px;
         line-height: 1.3;
