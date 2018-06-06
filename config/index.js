@@ -78,13 +78,6 @@ module.exports = {
         type: 'image/x-icon',
         href: '/favicon.png',
       },
-    ],
-
-    meta: [
-      {
-        name: 'google-site-verification',
-        content: 'dT5mOvcnHBwZzkWyxWddA3nq8lCPJT2V5uWXALwuWlA'
-      }
     ]
 
     // Run the build command with an extra argument to
