@@ -78,7 +78,7 @@ module.exports = {
         type: 'image/x-icon',
         href: '/favicon.png',
       },
-    ]
+    ],
 
     // Run the build command with an extra argument to
     // View the bundle analyzer report after build finishes:
