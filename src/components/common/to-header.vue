@@ -156,7 +156,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    padding-top: 35px;
+    padding: 35px 10px 0;
     margin: 0 auto 15px;
 
     .main-logo {
@@ -230,8 +230,8 @@
       display: flex;
       justify-content: space-between;
       width: 100%;
-      max-width: 1090px;
-      padding: 0 15px;
+      max-width: 1080px;
+      padding: 0 10px;
       margin: 0 auto;
 
       @include media(mobile) {
