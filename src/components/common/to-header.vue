@@ -43,7 +43,7 @@
       <nav class="nav nav--external-portfolio">
         <ul>
           <li @click="closeMobileMenu">
-            <a href="https://www.instagram.com/tomekolszowski/" target="_blank" class="link-insta">
+            <a href="https://www.instagram.com/tomekolszowski/" target="_blank" class="link-in">
               <img src="/src/assets/images/logo-instagram.svg" alt="Tomek Olszowski - Shooting Cars logotype">
             </a>
           </li>
@@ -345,7 +345,7 @@
         }
       }
 
-      .link-insta img {
+      .link-in img {
         position: relative;
         top: 6px;
         height: 21px;
