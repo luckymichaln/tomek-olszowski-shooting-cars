@@ -128,6 +128,10 @@
       max-width: 1600px;
       padding: 0 50px;
 
+      &:not(:last-child) {
+        margin-bottom: 50px;
+      }
+
       img {
         position: relative;
         z-index: 10;
