@@ -6,6 +6,7 @@
         :gallery="singleSession.fullpagegallery"
         :title="singleSession.title"
         :info="singleSession.about"
+        :vimeoid="singleSession.vimeoid"
       />
     </transition>
     <transition name="fade" mode="in-out">

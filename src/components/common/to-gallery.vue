@@ -1,5 +1,6 @@
 <template>
   <div class="to-gallery">
+    <iframe v-if="vimeoid" :src="vimeoSrc" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     <div
       v-for="(img, index) in gallery"
       :key="index"
@@ -39,19 +40,25 @@
         type: Array,
         default: () => []
       },
-      title: String
+      title: String,
+      vimeoid: [Number, Boolean]
     },
 
     mounted () {
       if (window.innerWidth <= 768) {
         this.$router.push('/')
       }
+      console.log(this.vimeoid, 'vimeoid')
+      console.log(this.vimeoSrc, 'vimeoSrc')
     },
 
     computed: {
       ...mapGetters(['singleSession']),
       lazyLoaderStyle () {
         return `background-color: ${this.singleSession.fullpagegallerybackgroundcolor}`
+      },
+      vimeoSrc () {
+        return `https://player.vimeo.com/video/${this.vimeoid}?color=ffffff&title=0&byline=0&portrait=0`
       }
     }
   }
@@ -72,7 +79,7 @@
       flex-flow: column nowrap;
       justify-content: center;
       align-items: center;
-      margin-bottom: 50px;
+      margin: 50px 0 50px;
       font-size: 14px;
       line-height: 1.3;
 
@@ -120,7 +127,6 @@
       width: 100%;
       max-width: 1600px;
       padding: 0 50px;
-      margin-bottom: 50px;
 
       img {
         position: relative;

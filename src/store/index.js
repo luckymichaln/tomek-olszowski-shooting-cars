@@ -112,7 +112,7 @@ const getters = {
   sessions (state) {
     let arr = (state.sessions || []).map(el => {
       const { id } = el
-      const { slug, title, about, gallery, placement, mobilegallery, fullpagegallery } = el.acf.session[0]
+      const { slug, title, about, gallery, placement, mobilegallery, fullpagegallery, test } = el.acf.session[0]
       return {
         title,
         about,
@@ -120,6 +120,7 @@ const getters = {
         mobilegallery,
         fullpagegallery,
         slug,
+        vimeoid: test ? parseInt(test) : false,
         placement: parseInt(placement),
         id
       }
@@ -131,7 +132,8 @@ const getters = {
     if (!state.singleSession) {
       return {}
     }
-    const { fullpagegallerybackgroundcolor, fullpagegallery, title, about } = state.singleSession.acf.session[0]
+
+    const { fullpagegallerybackgroundcolor, fullpagegallery, title, about, test } = state.singleSession.acf.session[0]
 
     if (fullpagegallery) {
       return {
@@ -143,10 +145,16 @@ const getters = {
           }
         }),
         title,
-        about: about || []
+        about: about || [],
+        vimeoid: test ? parseInt(test) : false
       }
     } else {
-      return []
+      return {
+        fullpagegallerybackgroundcolor,
+        title,
+        about: about || [],
+        vimeoid: test ? parseInt(test) : false
+      }
     }
   },
   pagePosition: state => state.pagePosition

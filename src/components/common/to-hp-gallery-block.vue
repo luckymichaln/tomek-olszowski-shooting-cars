@@ -17,7 +17,7 @@
             :style="brickStyles(img)"
           >
             <router-link
-              v-if="item.fullpagegallery"
+              v-if="item.fullpagegallery || item.vimeoid"
               :to="`/${item.id}/${item.slug}`"
               v-lazy="img.src"
               @click.native="setPagePosition"
@@ -69,7 +69,7 @@
         </div>
         <div class="to-gallery-block__row--mobile-wrapper">
           <div class="row-mobile__info">
-            <span class="info__title">{{ item.title }}</span>
+            <span v-if="item.mobilegallery" class="info__title">{{ item.title }}</span>
             <div
               class="info-block"
               v-for="(aboutBlock, index) in item.about"
