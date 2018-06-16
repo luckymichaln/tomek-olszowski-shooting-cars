@@ -125,12 +125,14 @@
           // b.style.overflow = 'hidden'
           // b.style.height = '100%'
           // b.style.width = '100%'
-          // b.style.position = 'fixed'
+          setTimeout(() => {
+            b.style.position = 'fixed'
+          }, 350)
           // h.style.overflow = 'hidden'
           // a.style.overflow = 'hidden'
         } else if (!this.isMobileMenuOpen && (window.innerWidth < 768)) {
           // b.style.overflow = 'unset'
-          // b.style.position = 'static'
+          b.style.position = 'static'
           // h.style.overflow = 'unset'
           // a.style.overflow = 'unset'
         }
