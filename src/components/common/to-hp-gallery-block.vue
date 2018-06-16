@@ -179,7 +179,6 @@
           transition: .3s;
 
           .info__title {
-            font-family: $font-bold;
             font-weight: 600;
           }
 
@@ -282,7 +281,6 @@
         transition: .3s;
 
         .info__title {
-          font-family: $font-bold;
           font-weight: 600;
         }
 

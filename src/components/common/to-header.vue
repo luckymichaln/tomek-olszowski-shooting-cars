@@ -6,9 +6,9 @@
       ref="hamburger"
       @click="showMobileMenu"
     >
-      <span></span>
-      <span></span>
-      <span></span>
+      <span/>
+      <span/>
+      <span/>
     </div>
     <div :class="navClass">
       <nav class="nav nav--primary">
@@ -44,12 +44,12 @@
         <ul>
           <li @click="closeMobileMenu">
             <a href="https://www.instagram.com/tomekolszowski/" target="_blank" class="link-in">
-              <img src="/src/assets/images/logo-instagram.svg" alt="Tomek Olszowski - Shooting Cars logotype">
+              <img src="/src/assets/images/logo-instagram.svg" alt="Tomek Olszowski - Shooting Cars logotype"/>
             </a>
           </li>
           <li @click="closeMobileMenu">
             <a href="https://www.behance.net/tomekolszowski" target="_blank" class="link-behan">
-              <img src="/src/assets/images/logo-behance.svg" alt="Tomek Olszowski - Shooting Cars logotype">
+              <img src="/src/assets/images/logo-behance.svg" alt="Tomek Olszowski - Shooting Cars logotype"/>
             </a>
           </li>
         </ul>
@@ -122,17 +122,17 @@
 
       frizeMobileScreen (b, h, a) {
         if (this.isMobileMenuOpen && (window.innerWidth < 768)) {
-          b.style.overflow = 'hidden'
-          b.style.height = '100%'
-          b.style.width = '100%'
-          b.style.position = 'fixed'
-          h.style.overflow = 'hidden'
-          a.style.overflow = 'hidden'
+          // b.style.overflow = 'hidden'
+          // b.style.height = '100%'
+          // b.style.width = '100%'
+          // b.style.position = 'fixed'
+          // h.style.overflow = 'hidden'
+          // a.style.overflow = 'hidden'
         } else if (!this.isMobileMenuOpen && (window.innerWidth < 768)) {
-          b.style.overflow = 'unset'
-          b.style.position = 'static'
-          h.style.overflow = 'unset'
-          a.style.overflow = 'unset'
+          // b.style.overflow = 'unset'
+          // b.style.position = 'static'
+          // h.style.overflow = 'unset'
+          // a.style.overflow = 'unset'
         }
       }
     },
