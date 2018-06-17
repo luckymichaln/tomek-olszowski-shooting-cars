@@ -88,7 +88,7 @@
       }
 
       &__website {
-        display: block;
+        display: inline-block;
         margin-top: 22px;
         text-decoration: none;
         color: #000;
