@@ -44,11 +44,13 @@
 
         if (this.pagePosition) {
           body.style.height = `${pageHeight}px`
+          body.style.overflow = 'hidden'
 
           window.scrollTo(0, this.pagePosition)
 
           setTimeout(() => {
             body.style.height = 'auto'
+            body.style.overflow = 'visible'
           }, 1000)
         }
       }
