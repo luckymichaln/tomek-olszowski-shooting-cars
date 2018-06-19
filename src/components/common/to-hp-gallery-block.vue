@@ -273,11 +273,10 @@
         transform: translate(-50%, -50%);
         width: 100%;
         text-align: center;
-        font-size: 14px;
+        font-size: 16px;
+        line-height: 1.3;
         color: #dbdbdb;
         opacity: 0;
-        font-size: 14px;
-        line-height: 1.3;
         transition: .3s;
 
         .info__title {

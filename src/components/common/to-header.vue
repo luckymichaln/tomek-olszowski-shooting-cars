@@ -158,13 +158,13 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 35px 10px 0;
+    padding: 135px 10px 0;
     margin: 0 auto 15px;
 
     .main-logo {
       margin-bottom: 35px;
-      width: 270px;
-      height: 40px;
+      width: 251px;
+      height: 21px;
 
       @include media(mobile) {
         position: relative;
