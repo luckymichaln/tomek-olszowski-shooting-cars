@@ -7,10 +7,10 @@
     @content ;
   }
   @if $value == desktopXL {
-    @media (min-width: 1420px) { @content ; }
+    @media (min-width: 1580px) { @content ; }
   }
-  @else if $value == tabletOnly {
-    @media (min-width: 768px) and (max-width: 960px) { @content ; }
+  @if $value == desktop {
+    @media (min-width: 1160px) { @content ; }
   }
   @else if $value == tablet {
     @media (max-width: 960px) { @content ; }

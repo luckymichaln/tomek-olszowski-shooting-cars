@@ -48,8 +48,6 @@
       if (window.innerWidth <= 768) {
         this.$router.push('/')
       }
-      console.log(this.vimeoid, 'vimeoid')
-      console.log(this.vimeoSrc, 'vimeoSrc')
     },
 
     computed: {
