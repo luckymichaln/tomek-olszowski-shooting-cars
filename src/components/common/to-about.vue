@@ -29,7 +29,7 @@
   .to-about {
     display: flex;
     justify-content: space-between;
-    padding: 70px 0 40px;
+    padding: 72px 0 40px;
 
     .info-block {
       display: flex;

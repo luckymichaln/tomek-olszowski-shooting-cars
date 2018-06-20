@@ -47,7 +47,7 @@
   @import "./../../assets/styles/helpers/_breakpoints";
 
   .to-contact {
-    padding: 70px 0 40px;
+    padding: 72px 0 40px;
 
     &__heading {
       margin-bottom: 40px;

@@ -1,11 +1,12 @@
 <template>
   <header class="to-header box--width">
-    <img src="/src/assets/images/logo_main_new.svg" alt="Tomek Olszowski - Shooting Cars logotype" class="main-logo">
-    <div
+    <div class="header">
+      <img src="/src/assets/images/logo_main_new.svg" alt="Tomek Olszowski - Shooting Cars logotype" class="main-logo">
+      <div
       :class="hamburgerClass"
       ref="hamburger"
       @click="showMobileMenu"
-    >
+      >
       <span/>
       <span/>
       <span/>
@@ -13,47 +14,48 @@
     <div :class="navClass">
       <nav class="nav nav--primary">
         <ul
-          ref="navList"
+        ref="navList"
         >
-          <li>
-            <router-link
-              :to="{ name: 'home'}"
-              @click.native="clickHandler"
-            >
-              Works
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              :to="{ name: 'about'}"
-              @click.native="closeMobileMenu"
-            >
-              About
-            </router-link>
-          </li>
-          <li @click="closeMobileMenu">
-            <router-link
-              :to="{ name: 'contact'}"
-            >
-              Contact
-            </router-link>
-          </li>
-        </ul>
-      </nav>
-      <nav class="nav nav--external-portfolio">
-        <ul>
-          <li @click="closeMobileMenu">
-            <a href="https://www.instagram.com/tomekolszowski/" target="_blank" class="link-in">
-              <img src="/src/assets/images/logo-instagram.svg" alt="Tomek Olszowski - Shooting Cars logotype"/>
-            </a>
-          </li>
-          <li @click="closeMobileMenu">
-            <a href="https://www.behance.net/tomekolszowski" target="_blank" class="link-behan">
-              <img src="/src/assets/images/logo-behance.svg" alt="Tomek Olszowski - Shooting Cars logotype"/>
-            </a>
-          </li>
-        </ul>
-      </nav>
+        <li>
+          <router-link
+          :to="{ name: 'home'}"
+          @click.native="clickHandler"
+          >
+          Works
+        </router-link>
+      </li>
+      <li>
+        <router-link
+        :to="{ name: 'about'}"
+        @click.native="closeMobileMenu"
+        >
+        About
+      </router-link>
+    </li>
+    <li @click="closeMobileMenu">
+      <router-link
+      :to="{ name: 'contact'}"
+      >
+      Contact
+    </router-link>
+  </li>
+</ul>
+</nav>
+<nav class="nav nav--external-portfolio">
+  <ul>
+    <li @click="closeMobileMenu">
+      <a href="https://www.instagram.com/tomekolszowski/" target="_blank" class="link-in">
+        <img src="/src/assets/images/logo-instagram.svg" alt="Tomek Olszowski - Shooting Cars logotype"/>
+      </a>
+    </li>
+    <li @click="closeMobileMenu">
+      <a href="https://www.behance.net/tomekolszowski" target="_blank" class="link-behan">
+        <img src="/src/assets/images/logo-behance.svg" alt="Tomek Olszowski - Shooting Cars logotype"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+</div>
     </div>
   </header>
 </template>
@@ -159,25 +161,30 @@
     display: flex;
     flex-direction: column;
     padding: 135px 10px 0;
-    margin: 0 auto 15px;
+    margin: 0 auto 40px;
+
+    .header {
+      display: flex;
+    }
 
     .main-logo {
-      margin-bottom: 35px;
+      position: relative;
+      top: 0;
+      left: -6px;
       width: 251px;
       height: 21px;
 
       @include media(mobile) {
         position: relative;
-        top: 5px;
-        left: 5px;
+        top: 0;
+        left: -1px;
         z-index: 999;
-        margin-bottom: 10px;
       }
     }
 
     &__mobile-hamburger {
       position: absolute;
-      top: 15px;
+      top: 11px;
       right: 15px;
       z-index: 110;
       display: none;
@@ -230,11 +237,7 @@
 
     &__nav {
       display: flex;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 1080px;
-      padding: 0 10px;
-      margin: 0 auto;
+      margin-left: auto;
 
       @include media(mobile) {
         display: none;
@@ -277,7 +280,11 @@
 
       li {
         &:not(:last-child) {
-          margin-bottom: 5px;
+          margin-right: 18px;
+
+          @include media(mobile) {
+            margin-right: 0;
+          }
         }
       }
 
@@ -295,10 +302,15 @@
       }
 
       &--primary {
+        display: flex;
+
         ul {
-          flex-direction: column;
+          display: flex;
+          align-items: flex-end;
 
           @include media(mobile) {
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
             height: 100vh;
             width: 100%;
@@ -313,13 +325,14 @@
       }
 
       &--external-portfolio {
+        margin-left: 18px;
+
         ul {
           flex-flow: row nowrap;
           align-items: flex-end;
-          height: 100%;
 
           li:not(:last-child) {
-            margin-right: 15px;
+            margin-right: 14px;
 
             @include media(mobile) {
               margin-right: 45px;
@@ -333,13 +346,17 @@
           bottom: 20px;
           transform: translateX(-50%);
         }
+
+        @include media(mobile) {
+          margin-left: 0;
+        }
       }
 
       .link-behan img {
         position: relative;
-        top: 6px;
-        height: 31px;
-        width: 31px;
+        top: 4px;
+        height: 20px;
+        width: 21px;
 
         @include media(mobile) {
           height: 51px;
@@ -349,9 +366,9 @@
 
       .link-in img {
         position: relative;
-        top: 6px;
-        height: 21px;
-        width: 20px;
+        top: 1px;
+        height: 14px;
+        width: 16px;
 
         @include media(mobile) {
           height: 41px;
@@ -366,7 +383,7 @@
       left: 0;
       z-index: 1000;
       width: 100%;
-      padding-top: 0;
+      padding: 10px;
       background-color: #fff;
     }
   }
