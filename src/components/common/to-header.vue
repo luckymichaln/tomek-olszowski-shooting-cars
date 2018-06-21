@@ -176,7 +176,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 70px 20px 0;
+    padding: 70px 15px 0;
     margin: 0 auto 40px;
 
     .header {

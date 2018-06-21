@@ -35,8 +35,7 @@
       display: flex;
       flex-flow: column nowrap;
       width: calc((100% / 3) - 10px);
-      font-size: 14px;
-      line-height: 1.3;
+      line-height: 1.2;
 
       &__title {
         margin-bottom: 40px;
@@ -82,6 +81,7 @@
         padding: 0;
         margin-bottom: 40px;
         font-size: 17px;
+        line-height: 1.3;
       }
     }
 

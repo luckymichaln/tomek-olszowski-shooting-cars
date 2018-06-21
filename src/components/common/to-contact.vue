@@ -51,7 +51,6 @@
 
     &__heading {
       margin-bottom: 40px;
-      font-size: 14px;
       font-weight: 600;
 
       @include media(mobile) {
@@ -79,8 +78,7 @@
     .info-block {
       width: calc((100% / 3) - 10px);
       padding-right: 45px;
-      line-height: 1.3;
-      font-size: 14px;
+      line-height: 1.2;
 
       &__title,
       &__subtitle {
@@ -98,6 +96,7 @@
         width: 100%;
         margin-bottom: 40px;
         font-size: 17px;
+        line-height: 1.3;
       }
     }
   }

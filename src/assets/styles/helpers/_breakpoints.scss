@@ -10,7 +10,7 @@
     @media (min-width: 1580px) { @content ; }
   }
   @if $value == desktop {
-    @media (min-width: 1160px) { @content ; }
+    @media (min-width: 1180px) { @content ; }
   }
   @else if $value == tablet {
     @media (max-width: 960px) { @content ; }

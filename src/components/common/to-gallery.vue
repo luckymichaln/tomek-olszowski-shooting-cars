@@ -78,8 +78,8 @@
       justify-content: center;
       align-items: center;
       margin: 50px 0 50px;
-      font-size: 14px;
-      line-height: 1.3;
+      font-size: 16px;
+      line-height: 1.2;
 
       .info-title {
         font-weight: 600;
@@ -91,15 +91,15 @@
     }
 
     &__go-back {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 600;
       color: #000;
     }
 
     &__logo {
-      width: 270px;
-      height: 40px;
-      margin-top: 10px;
+      width: 251px;
+      height: 21px;
+      margin-top: 13px;
     }
 
     &__lazy-loader {
