@@ -212,51 +212,6 @@
         display: block;
         height: 100%;
         width: 100%;
-
-        &::before,
-        &::after {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-        }
-
-        &::before {
-          height: calc(100% - 4px);
-          background-color: rgba(#000, .5);
-          opacity: 0;
-          transition: .3s;
-        }
-
-        &::after {
-          z-index: 100;
-          background-color: darken(#fff, 2);
-          transition: 1s;
-        }
-
-        &[lazy=loading] {
-          &::after  {
-            opacity: 1;
-          }
-        }
-
-        &[lazy=loaded] {
-          &::after {
-            opacity: 0;
-          }
-        }
-
-        &:hover {
-          .brick-info {
-            opacity: 1;
-          }
-
-          &::before {
-            opacity: 1;
-          }
-        }
       }
 
 
