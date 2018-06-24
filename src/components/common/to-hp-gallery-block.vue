@@ -224,7 +224,7 @@
         }
 
         &::before {
-          height: calc(100% - 3px);
+          height: calc(100% - 4px);
           background-color: rgba(#000, .5);
           opacity: 0;
           transition: .3s;
@@ -290,7 +290,7 @@
     }
 
     .brick-wrapper {
-      margin: 0 0 7px;
+      margin: 0 0 6px;
       padding: 0 5px;
     }
 
