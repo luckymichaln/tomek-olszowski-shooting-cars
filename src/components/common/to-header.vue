@@ -89,28 +89,12 @@
 
     mounted () {
       this.isMobileMenuOpen = false
-      // setTimeout(() => {
-      //   const grid = document.getElementsByClassName('to-gallery')[0]
-      //   console.log(grid, 'grid')
-      //   window.addEventListener('resize', this.setGridPaddings(grid), false)
-      // }, 1700)
     },
 
     methods: {
       resetPagePosition () {
         this.$store.commit('SET_PAGE_POSITION', { data: 0 })
       },
-
-      // setGridPaddings (grid) {
-      //   console.log('lalal')
-      //   let header = this.$refs.header
-      //   let padding = grid.offsetLeft + 5
-      //   console.log(padding, 'padding')
-      //   if (window.innerWidth <= 1060) {
-      //     header.style.paddingRight = `${padding}px`
-      //     header.style.paddingLeft = `${padding}px`
-      //   }
-      // },
 
       showMobileMenu () {
         let nav = document.getElementsByClassName('to-header__nav')[0]
@@ -140,19 +124,11 @@
 
       frizeMobileScreen (b, h, a) {
         if (this.isMobileMenuOpen && (window.innerWidth < 768)) {
-          // b.style.overflow = 'hidden'
-          // b.style.height = '100%'
-          // b.style.width = '100%'
           setTimeout(() => {
             b.style.position = 'fixed'
           }, 350)
-          // h.style.overflow = 'hidden'
-          // a.style.overflow = 'hidden'
         } else if (!this.isMobileMenuOpen && (window.innerWidth < 768)) {
-          // b.style.overflow = 'unset'
           b.style.position = 'static'
-          // h.style.overflow = 'unset'
-          // a.style.overflow = 'unset'
         }
       }
     },
