@@ -23,8 +23,10 @@
         <span>{{ item.info }}</span>
       </div>
     </div>
-    <router-link :to="{ name: 'home' }" class="to-gallery__go-back">Back to Works</router-link>
-    <img src="/src/assets/images/logo_main_new.svg" alt="Tomek Olszowski - Shooting Cars logotype" class="to-gallery__logo"/>
+    <router-link :to="{ name: 'home' }" class="to-gallery__go-back">
+      Back to Works
+      <img src="/src/assets/images/logo_main_new.svg" alt="Tomek Olszowski - Shooting Cars logotype" class="to-gallery__logo"/>
+    </router-link>
   </div>
 </template>
 <script>
@@ -91,6 +93,9 @@
     }
 
     &__go-back {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       font-size: 16px;
       font-weight: 600;
       color: #000;
