@@ -27,6 +27,14 @@
       Back to Works
       <img src="/src/assets/images/logo_main_new.svg" alt="Tomek Olszowski - Shooting Cars logotype" class="to-gallery__logo"/>
     </router-link>
+    <div class="to-gallery__social">
+      <a href="https://www.instagram.com/tomekolszowski/" target="_blank" class="link-in">
+        <img src="/src/assets/images/logo-instagram.svg" alt="Tomek Olszowski - Shooting Cars logotype"/>
+      </a>
+      <a href="https://www.behance.net/tomekolszowski" target="_blank" class="link-behan">
+        <img src="/src/assets/images/logo-behance.svg" alt="Tomek Olszowski - Shooting Cars logotype"/>
+      </a>
+    </div>
   </div>
 </template>
 <script>
@@ -140,6 +148,25 @@
         z-index: 10;
         height: 100%;
         object-fit: contain;
+      }
+    }
+
+    &__social {
+      display: flex;
+      margin-top: 50px;
+
+      a {
+        display: flex;
+        height: 30px;
+        margin: 0 10px;
+
+        &.link-in {
+          width: 20px;
+        }
+
+        &.link-behan {
+          width: 30px;
+        }
       }
     }
   }
