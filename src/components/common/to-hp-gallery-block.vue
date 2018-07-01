@@ -3,7 +3,8 @@
     <div
       class="to-gallery-block"
       v-for="(item, index) of content"
-      :key="index">
+      :key="index"
+    >
         <div
           v-for="(element, index) in item.gallery"
           :key="index + 'desktop'"
@@ -68,8 +69,8 @@
           </div>
         </div>
         <div class="to-gallery-block__row--mobile-wrapper">
-          <div class="row-mobile__info">
-            <span v-if="item.mobilegallery" class="info__title">{{ item.title }}</span>
+          <div v-if="item.mobilegallery" class="row-mobile__info">
+            <span class="info__title">{{ item.title }}</span>
             <div
               class="info-block"
               v-for="(aboutBlock, index) in item.about"
@@ -87,6 +88,26 @@
             v-lazy="element.url">
             <img
               :src="element.url"/>
+          </div>
+          <div
+            class="to-gallery-block__row--mobile row-vimeo"
+            v-if="item.vimeoid"
+          >
+            <div class="row-mobile__info">
+              <span class="info__title">{{ item.title }}</span>
+              <div
+                class="info-block"
+                v-for="(aboutBlock, index) in item.about"
+                v-if="item.about"
+                :key="index"
+              >
+                <span>{{ aboutBlock.label }}: </span>
+                <span>{{ aboutBlock.info }}</span>
+              </div>
+            </div>
+            <div class="mobile-iframe-wrapper">
+              <iframe :src="vimeoSrc(item)" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
           </div>
         </div>
     </div>
@@ -115,6 +136,9 @@
       setPagePosition () {
         let position = window.scrollY
         this.$store.commit('SET_PAGE_POSITION', { data: position })
+      },
+      vimeoSrc (item) {
+        return `https://player.vimeo.com/video/${item.vimeoid}?color=000000&title=0&byline=0&portrait=0`
       }
     }
   }
@@ -128,9 +152,9 @@
     width: 100%;
     margin-bottom: 93px;
 
-    &:last-of-type {
-      display: none;
-    }
+    // &:last-of-type {
+    //   display: none;
+    // }
 
     &__row {
       display: flex;
@@ -142,6 +166,12 @@
       &--mobile {
         display: none;
         position: relative;
+
+        &.row-vimeo {
+          &::before {
+            display: none;
+          }
+        }
 
         &::before {
           content: '';
@@ -308,6 +338,25 @@
     .row-mobile__info {
       margin-bottom: 20px;
       font-size: 17px;
+    }
+
+    .mobile-iframe-wrapper {
+      position: relative;
+      height: 0;
+      height: auto;
+      max-width: 100%;
+      padding-bottom: 56.25%;
+      overflow: hidden;
+
+      iframe,
+      object,
+      embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
     }
 
     @include media(mobile) {

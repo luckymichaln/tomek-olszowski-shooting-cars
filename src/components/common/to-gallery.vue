@@ -1,6 +1,8 @@
 <template>
   <div class="to-gallery">
-    <iframe v-if="vimeoid" :src="vimeoSrc" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    <div v-if="vimeoid" class="to-gallery__vimeo-wrapper">
+      <iframe :src="vimeoSrc" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
     <div
       v-for="(img, index) in gallery"
       :key="index"
@@ -80,6 +82,25 @@
 
     &--fullscreen {
       padding: 50px 0 300px;
+    }
+
+    &__vimeo-wrapper {
+      position: relative;
+      height: 0;
+      height: auto;
+      max-width: 100%;
+      padding-bottom: 56.25%;
+      overflow: hidden;
+
+      iframe,
+      object,
+      embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
     }
 
     &__info {
