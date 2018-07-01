@@ -3,39 +3,41 @@
     <div v-if="vimeoid" class="to-gallery__vimeo-wrapper">
       <iframe :src="vimeoSrc" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     </div>
-    <div
-      v-for="(img, index) in gallery"
-      :key="index"
-      class="to-gallery__img-wrapper"
-      v-lazy="img.url"
-    >
-      <div class="to-gallery__lazy-loader" v-lazy="img.url" :style="lazyLoaderStyle"/>
-      <img
-        :srcset="img.url"
-        alt="img">
-    </div>
-    <div class="to-gallery__info">
-      <p class="info-title">{{ title }}</p>
+    <div class="to-gallery__grid">
       <div
-        class="info-block"
-        v-for="(item, index) in info"
+        v-for="(img, index) in gallery"
         :key="index"
+        class="to-gallery__img-wrapper"
+        v-lazy="img.url"
       >
-        <span>{{ item.label }}: </span>
-        <span>{{ item.info }}</span>
+        <div class="to-gallery__lazy-loader" v-lazy="img.url" :style="lazyLoaderStyle"/>
+        <img
+          :srcset="img.url"
+          alt="img">
       </div>
-    </div>
-    <router-link :to="{ name: 'home' }" class="to-gallery__go-back">
-      Back to Works
-      <img src="/src/assets/images/logo_main_new.svg" alt="Tomek Olszowski - Shooting Cars logotype" class="to-gallery__logo"/>
-    </router-link>
-    <div class="to-gallery__social">
-      <a href="https://www.instagram.com/tomekolszowski/" target="_blank" class="link-in">
-        <img src="/src/assets/images/logo-instagram.svg" alt="Tomek Olszowski - Shooting Cars logotype"/>
-      </a>
-      <a href="https://www.behance.net/tomekolszowski" target="_blank" class="link-behan">
-        <img src="/src/assets/images/logo-behance.svg" alt="Tomek Olszowski - Shooting Cars logotype"/>
-      </a>
+      <div class="to-gallery__info">
+        <p class="info-title">{{ title }}</p>
+        <div
+          class="info-block"
+          v-for="(item, index) in info"
+          :key="index"
+        >
+          <span>{{ item.label }}: </span>
+          <span>{{ item.info }}</span>
+        </div>
+      </div>
+      <router-link :to="{ name: 'home' }" class="to-gallery__go-back">
+        Back to Works
+        <img src="/src/assets/images/logo_main_new.svg" alt="Tomek Olszowski - Shooting Cars logotype" class="to-gallery__logo"/>
+      </router-link>
+      <div class="to-gallery__social">
+        <a href="https://www.instagram.com/tomekolszowski/" target="_blank" class="link-in">
+          <img src="/src/assets/images/logo-instagram.svg" alt="Tomek Olszowski - Shooting Cars logotype"/>
+        </a>
+        <a href="https://www.behance.net/tomekolszowski" target="_blank" class="link-behan">
+          <img src="/src/assets/images/logo-behance.svg" alt="Tomek Olszowski - Shooting Cars logotype"/>
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -76,9 +78,11 @@
 
 <style lang="scss">
   .to-gallery {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
+    &__grid {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+    }
 
     &--fullscreen {
       padding: 50px 0 300px;
