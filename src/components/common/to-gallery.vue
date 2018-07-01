@@ -93,6 +93,7 @@
       height: 0;
       height: auto;
       max-width: 100%;
+      margin-bottom: 50px;
       padding-bottom: 56.25%;
       overflow: hidden;
 
@@ -101,9 +102,16 @@
       embed {
         position: absolute;
         top: 0;
-        left: 0;
+        left: 50%;
+        transform: translateX(-50%);
         width: 100%;
         height: 100%;
+      }
+
+      iframe {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 50px;
       }
     }
 
