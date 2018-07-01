@@ -128,6 +128,10 @@
     width: 100%;
     margin-bottom: 93px;
 
+    &:last-of-type {
+      display: none;
+    }
+
     &__row {
       display: flex;
       flex-wrap: nowrap;
