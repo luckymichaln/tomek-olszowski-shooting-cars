@@ -20,13 +20,13 @@
             <router-link
               v-if="item.fullpagegallery || item.vimeoid"
               :to="`/${item.id}/${item.slug}`"
-              v-lazy="img.src"
+              v-lazy="img.src.url"
               @click.native="setPagePosition"
             >
               <img
                 v-if="!img.isEmpty"
                 :key="index"
-                :srcset="img.src"
+                :srcset="srcSet(img)"
                 :alignment="img.alignment"
                 :alt="content[0].about.title"
               />
@@ -45,12 +45,12 @@
             <span
               v-else
               class="brick-nolink"
-              v-lazy="img.src"
+              v-lazy="img.src.url"
             >
               <img
                 v-if="!img.isEmpty"
                 :key="index"
-                :srcset="img.src"
+                :srcset="srcSet(img)"
                 :alignment="img.alignment"
                 :alt="content[0].about.title"
               />
@@ -137,6 +137,11 @@
         let position = window.scrollY
         this.$store.commit('SET_PAGE_POSITION', { data: position })
       },
+
+      srcSet (img) {
+        return `${img.src.url} 1x, ${img.srcRetina.url} 2x`
+      },
+
       vimeoSrc (item) {
         return `https://player.vimeo.com/video/${item.vimeoid}?color=000000&title=0&byline=0&portrait=0`
       }
@@ -151,10 +156,6 @@
   .to-gallery-block {
     width: 100%;
     margin-bottom: 93px;
-
-    // &:last-of-type {
-    //   display: none;
-    // }
 
     &__row {
       display: flex;
@@ -252,6 +253,7 @@
         position: relative;
         display: block;
         height: 100%;
+        min-height: 170px;
         width: 100%;
 
         &::before,

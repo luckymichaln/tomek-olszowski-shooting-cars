@@ -34,7 +34,6 @@ const router = new Router({
 })
 
 router.beforeEach(function (to, from, next) {
-  // console.log(to, from)
   next()
 })
 

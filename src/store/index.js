@@ -1,5 +1,5 @@
-import Vuex from 'vuex'
 import Vue from 'vue'
+import Vuex from 'vuex'
 import { apiSearchPostsCollection, apiSearchPost, apiSearchPage } from './api'
 
 Vue.use(Vuex)
@@ -19,10 +19,11 @@ const actions = {
     commit('SET_CONTENT_LOADED', { data: false })
     try {
       const results = await apiSearchPostsCollection()
-      console.log(results, 'results')
 
       commit('SET_SESSIONS', { data: results.data })
       commit('SET_CONTENT_LOADED', { data: true })
+
+      console.log(results, 'lalal')
 
       return results
     } catch (error) {
@@ -38,8 +39,6 @@ const actions = {
       commit('SET_SINGLE_SESSION', { data: result.data })
       commit('SET_CONTENT_LOADED', { data: true })
 
-      console.log(result)
-
       return result
     } catch (error) {
       console.error('error from single session', { error })
@@ -50,8 +49,6 @@ const actions = {
     commit('SET_CONTENT_LOADED', { data: false })
     try {
       const result = await apiSearchPage(id)
-
-      console.log(result, 'result about')
 
       commit('SET_ABOUT_DATA', { data: result.data.acf })
       commit('SET_CONTENT_LOADED', { data: true })
@@ -66,8 +63,6 @@ const actions = {
     commit('SET_CONTENT_LOADED', { data: false })
     try {
       const result = await apiSearchPage(id)
-
-      console.log(result, 'result about')
 
       commit('SET_CONTACT_DATA', { data: result.data.acf.contact })
       commit('SET_CONTENT_LOADED', { data: true })
