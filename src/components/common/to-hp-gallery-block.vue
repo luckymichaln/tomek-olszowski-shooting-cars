@@ -23,6 +23,7 @@
               v-lazy="img.src.url"
               @click.native="setPagePosition"
             >
+              <span class="brick__placeholder"/>
               <img
                 v-if="!img.isEmpty"
                 :key="index"
@@ -280,6 +281,25 @@
         }
 
         &[lazy=loading] {
+          > .brick__placeholder {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+
+            &::after {
+              content: url('./../../assets/images/loader/loader-2.svg');
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              z-index: 9999;
+              transform: translate(-50%, -50%);
+              width: 132px;
+              opacity: .3;
+            }
+          }
+
           &::after  {
             opacity: 1;
           }
@@ -332,9 +352,11 @@
       }
     }
 
-    .brick-wrapper {
-      margin: 0 0 6px;
-      padding: 0 5px;
+    .brick {
+      &-wrapper {
+        margin: 0 0 6px;
+        padding: 0 5px;
+      }
     }
 
     .row-mobile__info {
