@@ -12,11 +12,13 @@ Vue.config.productionTip = true
 
 /* eslint-disable no-new */
 
-Vue.use(VueLazyload, {
-  preLoad: 1.3,
-  attempt: 1,
-  throttleWait: 100
-})
+setTimeout(() => {
+  Vue.use(VueLazyload, {
+    preLoad: 1.3,
+    attempt: 1,
+    throttleWait: 100
+  })
+}, 300)
 
 new Vue({
   el: '#app',
