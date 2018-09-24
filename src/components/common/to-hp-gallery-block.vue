@@ -254,7 +254,7 @@
         position: relative;
         display: block;
         height: 100%;
-        min-height: 170px;
+        min-height: 110px;
         width: 100%;
 
         &::before,
