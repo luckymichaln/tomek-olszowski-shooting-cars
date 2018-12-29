@@ -23,7 +23,7 @@ const actions = {
       commit('SET_SESSIONS', { data: results.data })
       commit('SET_CONTENT_LOADED', { data: true })
 
-      console.log(results, 'lalal')
+      console.log({GET_HP_SESSIONS: results})
 
       return results
     } catch (error) {
@@ -38,6 +38,8 @@ const actions = {
 
       commit('SET_SINGLE_SESSION', { data: result.data })
       commit('SET_CONTENT_LOADED', { data: true })
+
+      console.log({GET_SINGLE_SESSION: result})
 
       return result
     } catch (error) {
