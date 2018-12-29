@@ -164,6 +164,7 @@
       align-items: flex-start;
       margin: 0 -5px;
       padding: 0 5px;
+      line-height: 0;
 
       &--mobile {
         display: none;
@@ -268,7 +269,7 @@
         }
 
         &::before {
-          height: calc(100% - 4px);
+          height: 100%;
           background-color: rgba(#000, .5);
           opacity: 0;
           transition: .3s;
@@ -354,7 +355,7 @@
 
     .brick {
       &-wrapper {
-        margin: 0 0 6px;
+        margin: 0 0 10px;
         padding: 0 5px;
       }
     }
