@@ -21,7 +21,15 @@
                 :to="{ name: 'home'}"
                 @click.native="clickHandler"
               >
-                Works
+                Portfolio
+              </router-link>
+            </li>
+            <li class="nav__devider">
+              <router-link
+                :to="{ name: 'projects'}"
+                @click.native="clickHandler"
+              >
+                Projects
               </router-link>
             </li>
             <li>
@@ -290,6 +298,22 @@
 
         @include media(mobile) {
           font-size: 32px;
+        }
+      }
+
+      &__devider {
+        position: relative;
+        margin-right: 36px !important;
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: -3px;
+          right: -19px;
+          display: block;
+          height: 110%;
+          width: 2px;
+          background-color: #000;
         }
       }
 
