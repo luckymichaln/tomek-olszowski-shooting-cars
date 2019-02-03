@@ -7,7 +7,7 @@
     >
         <div
           v-for="(element, index) in item.gallery"
-          :key="index + 'desktop'"
+          :key="`${index}desktop`"
           class="to-gallery-block__row"
         >
           <div
@@ -73,13 +73,16 @@
           <div v-if="item.mobilegallery" class="row-mobile__info">
             <span class="info__title">{{ item.title }}</span>
             <div
-              class="info-block"
-              v-for="(aboutBlock, index) in item.about"
               v-if="item.about"
-              :key="index"
             >
-              <span>{{ aboutBlock.label }}: </span>
-              <span>{{ aboutBlock.info }}</span>
+              <div
+                class="info-block"
+                v-for="(aboutBlock, index) in item.about"
+                :key="index"
+              >
+                <span>{{ aboutBlock.label }}: </span>
+                <span>{{ aboutBlock.info }}</span>
+              </div>
             </div>
           </div>
           <div
