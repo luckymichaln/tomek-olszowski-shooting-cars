@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/pages/Home'
 import About from '@/components/pages/About'
+import Projects from '@/components/pages/Projects'
 import Gallery from '@/components/pages/Gallery'
 import Contact from '@/components/pages/Contact'
 
@@ -24,6 +25,11 @@ const router = new Router({
       path: '/contact',
       name: 'contact',
       component: Contact
+    },
+    {
+      path: '/projects',
+      name: 'projects',
+      component: Projects
     },
     {
       path: '/:id/:slug',
