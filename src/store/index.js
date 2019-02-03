@@ -23,7 +23,7 @@ const actions = {
       commit('SET_SESSIONS', { data: results.data })
       commit('SET_CONTENT_LOADED', { data: true })
 
-      console.log({GET_HP_SESSIONS: results})
+      console.log({GET_HP_SESSIONS: results.data})
 
       return results
     } catch (error) {
@@ -109,11 +109,12 @@ const getters = {
   sessions (state) {
     let arr = (state.sessions || []).map(el => {
       const { id } = el
-      const { slug, title, about, gallery, placement, mobilegallery, fullpagegallery, test } = el.acf.session[0]
+      const { slug, title, about, gallery, placement, mobilegallery, fullpagegallery, projectsgallery, test } = el.acf.session[0]
       return {
         title,
         about,
         gallery,
+        projectsgallery,
         mobilegallery,
         fullpagegallery,
         slug,
