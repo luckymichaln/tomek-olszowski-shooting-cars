@@ -11,7 +11,8 @@ const state = {
   contact: null,
   singleSession: null,
   pagePosition: null,
-  pageHeight: null
+  pageHeight: null,
+  backToProjects: false
 }
 
 const actions = {
@@ -99,6 +100,10 @@ const mutations = {
 
   SET_PAGE_POSITION (state, { data }) {
     state.pagePosition = data
+  },
+
+  SET_PAGE_REDIRECT (state, { data }) {
+    state.backToProjects = data
   }
 }
 
@@ -106,6 +111,7 @@ const getters = {
   isContentLoaded: state => state.isContentLoaded,
   about: state => state.about,
   contact: state => state.contact,
+  backToProjects: state => state.backToProjects,
   sessions (state) {
     let arr = (state.sessions || []).map(el => {
       const { id } = el
@@ -125,6 +131,32 @@ const getters = {
     })
 
     return arr.sort((a, b) => b.placement - a.placement)
+  },
+  sessionsCovers (state) {
+    if (!state.sessions) {
+      return null
+    }
+    let arr = []
+
+    return (state.sessions || []).filter(el => el.acf.session[0].projectsgallery).map(el => {
+      const { id } = el
+      const { projectsgallery, title, about, slug, placement, test } = el.acf.session[0]
+
+      projectsgallery.forEach(el => {
+        el = el.cover
+        el.forEach(e => {
+          e.title = title
+          e.about = about
+          e.slug = slug
+          e.placement = placement
+          e.test = test
+          e.id = id
+          arr.push(e)
+        })
+      })
+
+      return arr
+    })[0].sort((a, b) => b.placement - a.placement)
   },
   singleSession (state) {
     if (!state.singleSession) {
