@@ -10,7 +10,7 @@
       />
     </transition>
     <transition name="fade" mode="in-out">
-      <div class="loader" v-if="!isContentLoaded"></div>
+      <div class="loader" v-if="!isContentLoaded" />
     </transition>
   </div>
 </template>
@@ -31,7 +31,7 @@
       document.addEventListener('click', this.closeGallery)
     },
     computed: {
-      ...mapGetters(['isContentLoaded', 'singleSession']),
+      ...mapGetters(['isContentLoaded', 'singleSession', 'backToProjects']),
       backgroundColor () {
         return `background-color: ${this.singleSession.fullpagegallerybackgroundcolor}`
       }
@@ -39,9 +39,9 @@
     methods: {
       closeGallery (event) {
         if (event.target.classList.contains('modal-close-trigger') || event.keyCode === 27 || event.target.classList.contains('to-gallery__img-wrapper')) {
-          this.$router.push('/')
+          this.backToProjects ? this.$router.push({name: 'projects'}) : this.$router.push({name: 'home'})
         } else if (event.target.nodeName.toUpperCase() !== 'IMG' && !event.keyCode) {
-          this.$router.push('/')
+          this.backToProjects ? this.$router.push({name: 'projects'}) : this.$router.push({name: 'home'})
         }
       }
     },
