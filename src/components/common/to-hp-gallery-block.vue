@@ -100,13 +100,16 @@
             <div class="row-mobile__info">
               <span class="info__title">{{ item.title }}</span>
               <div
-                class="info-block"
-                v-for="(aboutBlock, index) in item.about"
                 v-if="item.about"
-                :key="index"
               >
-                <span>{{ aboutBlock.label }}: </span>
-                <span>{{ aboutBlock.info }}</span>
+                <div
+                  class="info-block"
+                  v-for="(aboutBlock, index) in item.about"
+                  :key="index"
+                >
+                  <span>{{ aboutBlock.label }}: </span>
+                  <span>{{ aboutBlock.info }}</span>
+                </div>
               </div>
             </div>
             <div class="mobile-iframe-wrapper">
@@ -140,6 +143,7 @@
       setPagePosition () {
         let position = window.scrollY
         this.$store.commit('SET_PAGE_POSITION', { data: position })
+        this.$store.commit('SET_PAGE_REDIRECT', { data: false })
       },
 
       srcSet (img) {
