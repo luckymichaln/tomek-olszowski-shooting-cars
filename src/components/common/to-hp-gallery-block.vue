@@ -163,7 +163,7 @@
 
   .to-gallery-block {
     width: 100%;
-    margin-bottom: 93px;
+    margin-bottom: 40px;
 
     &__row {
       display: flex;
@@ -297,13 +297,13 @@
             bottom: 0;
 
             &::after {
-              content: url('./../../assets/images/loader/loader-2.svg');
+              content: url('./../../assets/images/loader/loader_big_dot.svg');
               position: absolute;
               top: 50%;
               left: 50%;
               z-index: 9999;
               transform: translate(-50%, -50%);
-              width: 132px;
+              width: 20px;
               opacity: .3;
             }
           }
