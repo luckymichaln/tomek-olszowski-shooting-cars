@@ -80,7 +80,7 @@
     display: flex;
     flex-flow: row wrap;
     width: calc(100% + 10px);
-    margin: 0 -5px 93px -5px;
+    margin: 0 -5px 50px -5px;
 
     &__brick-wrapper {
       align-items: flex-start;
@@ -138,13 +138,13 @@
             bottom: 0;
 
             &::after {
-              content: url('./../../assets/images/loader/loader-2.svg');
+              content: url('./../../assets/images/loader/loader_big_dot.svg');
               position: absolute;
               top: 50%;
               left: 50%;
               z-index: 9999;
               transform: translate(-50%, -50%);
-              width: 132px;
+              width: 20px;
               opacity: .3;
             }
           }
