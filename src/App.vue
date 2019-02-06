@@ -37,11 +37,11 @@
     background-color: #fff;
 
     &::before {
-      content: url('./assets/images/loader/loader-2.svg');
+      content: url('./assets/images/loader/loader_dot.svg');
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 265px;
+      width: 165px;
       z-index: 9999;
       transform: translate(-50%, -50%);
     }
