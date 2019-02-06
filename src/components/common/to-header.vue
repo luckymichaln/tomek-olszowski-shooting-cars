@@ -284,6 +284,10 @@
 
           @include media(mobile) {
             margin-right: 0;
+
+            &.nav__devider {
+              display: none;
+            }
           }
         }
       }
