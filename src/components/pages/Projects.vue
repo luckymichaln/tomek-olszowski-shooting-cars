@@ -3,7 +3,7 @@
     <to-header />
     <div class="box main">
       <transition name="fade" mode="out-in" @before-enter="setTopPosition">
-        <to-projects-gallery-block v-if="isContentLoaded" :content="sessions" />
+        <to-projects-gallery-block v-if="isContentLoaded" :content="sessionsCovers" />
         <div class="loader" v-if="!isContentLoaded"/>
       </transition>
     </div>
@@ -23,7 +23,7 @@
     },
 
     computed: {
-      ...mapGetters(['sessions', 'isContentLoaded', 'pagePosition'])
+      ...mapGetters(['sessionsCovers', 'isContentLoaded', 'pagePosition'])
     },
 
     mounted () {
@@ -32,12 +32,13 @@
 
     methods: {
       setTopPosition () {
-        if (!this.pageHeight) {
+        if (!this.pagePosition) {
           window.scrollTo(0, 0)
         }
       },
 
       setActiveSessionPosition () {
+        window.scrollTo(0, 0)
         let body = document.getElementsByTagName('body')[0]
         let height = `${this.pagePosition}`
         let pageHeight = parseInt(height) + 1000
@@ -50,7 +51,7 @@
           setTimeout(() => {
             body.style.height = 'auto'
             body.style.overflow = 'visible'
-          }, 1000)
+          }, 1600)
         }
       }
     },
