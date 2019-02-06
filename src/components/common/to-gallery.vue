@@ -26,8 +26,8 @@
           <span>{{ item.info }}</span>
         </div>
       </div>
-      <router-link :to="{ name: 'home' }" class="to-gallery__go-back">
-        Back to Works
+      <router-link :to="backToProjects ? { name: 'projects' } : { name: 'home' }" class="to-gallery__go-back">
+        {{ goBackTitle() }}
         <img src="/src/assets/images/logo_main_new.svg" alt="Tomek Olszowski - Shooting Cars logotype" class="to-gallery__logo"/>
       </router-link>
       <div class="to-gallery__social">
@@ -58,14 +58,29 @@
       vimeoid: [Number, Boolean]
     },
 
+    data () {
+      return {
+        backStr: null
+      }
+    },
+
     mounted () {
-      if (window.innerWidth <= 768) {
+      if (window.innerWidth <= 768 && this.backToProjects) {
+        this.$router.push('/projects')
+      } else if (window.innerWidth <= 768 && !this.backToProjects) {
         this.$router.push('/')
+      }
+      console.log(this.backToProjects, 'backToProjects')
+    },
+
+    methods: {
+      goBackTitle () {
+        return this.backToProjects ? 'Back to Projects' : 'Back to Portfolio'
       }
     },
 
     computed: {
-      ...mapGetters(['singleSession']),
+      ...mapGetters(['singleSession', 'backToProjects']),
       lazyLoaderStyle () {
         return `background-color: ${this.singleSession.fullpagegallerybackgroundcolor}`
       },
