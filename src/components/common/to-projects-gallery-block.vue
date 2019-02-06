@@ -1,118 +1,41 @@
 <template>
   <div class="to-projects">
     <div
-      class="to-projects-block"
-      v-for="(item, index) of coversArr"
+      class="to-projects__brick-wrapper"
+      v-for="(item, index) of content"
       :key="index"
     >
       <div
-        v-for="(element, index) in item.projectsgallery"
-        :key="`${index}desktop`"
-        class="to-projects-block__row"
+        class="to-projects__brick"
+        :style="brickStyles(item)"
       >
-        <div
-          v-if="element.cover"
-          :key="`${index}desktop`"
+        <router-link
+          :to="`/${item.id}/${item.slug}`"
+          v-lazy="item.imagestandard"
+          @click.native="setPagePosition"
         >
-          <div
-            v-for="(img, index) in element.cover"
+          <span class="brick__placeholder"/>
+          <img
             :key="index"
-            class="brick-wrapper"
-            :class="brickClass(img)"
-            :style="brickStyles(img)"
-          >
-            <router-link
-              v-if="item.fullpagegallery || item.vimeoid"
-              :to="`/${item.id}/${item.slug}`"
-              v-lazy="img.imagestandard"
-              @click.native="setPagePosition"
-            >
-              <span class="brick__placeholder"/>
-              <img
-                :key="index"
-                :srcset="srcSet(img)"
-                :alt="content[0].about.title"
-              />
-              <!-- <div class="brick-info">
-                <span class="info__title">{{ item.title }}</span>
-                <div
-                  class="info-block"
-                  v-for="(aboutBlock, index) in item.about"
-                  :key="index"
-                >
-                  <span>{{ aboutBlock.label }}: </span>
-                  <span>{{ aboutBlock.info }}</span>
-                </div>
-              </div> -->
-            </router-link>
-            <!-- <span
-              v-else
-              class="brick-nolink"
-              v-lazy="img.src.url"
-            >
-              <img
-                v-if="!img.isEmpty"
-                :key="index"
-                :srcset="srcSet(img)"
-                :alignment="img.alignment"
-                :alt="content[0].about.title"
-              />
-              <div class="brick-info">
-                <span class="info__title">{{ item.title }}</span>
-                <div
-                  class="info-block"
-                  v-for="(aboutBlock, index) in item.about"
-                  :key="index"
-                >
-                  <span>{{ aboutBlock.label }}: </span>
-                  <span>{{ aboutBlock.info }}</span>
-                </div>
-              </div>
-            </span> -->
-          </div>
-        </div>
-        <!-- <div class="to-gallery-block__row--mobile-wrapper">
-          <div v-if="item.mobilegallery" class="row-mobile__info">
+            :srcset="srcSet(item)"
+            :alt="item.title"
+          />
+          <div class="brick-info">
             <span class="info__title">{{ item.title }}</span>
             <div
-              class="info-block"
-              v-for="(aboutBlock, index) in item.about"
               v-if="item.about"
-              :key="index"
             >
-              <span>{{ aboutBlock.label }}: </span>
-              <span>{{ aboutBlock.info }}</span>
-            </div>
-          </div>
-          <div
-            v-for="(element, index) in item.mobilegallery"
-            :key="index + 'mobile'"
-            class="to-gallery-block__row--mobile"
-            v-lazy="element.url">
-            <img
-              :src="element.url"/>
-          </div>
-          <div
-            class="to-gallery-block__row--mobile row-vimeo"
-            v-if="item.vimeoid"
-          >
-            <div class="row-mobile__info">
-              <span class="info__title">{{ item.title }}</span>
               <div
-                class="info-block"
                 v-for="(aboutBlock, index) in item.about"
-                v-if="item.about"
+                class="info-block"
                 :key="index"
               >
                 <span>{{ aboutBlock.label }}: </span>
                 <span>{{ aboutBlock.info }}</span>
               </div>
             </div>
-            <div class="mobile-iframe-wrapper">
-              <iframe :src="vimeoSrc(item)" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-            </div>
           </div>
-        </div> -->
+        </router-link>
       </div>
     </div>
   </div>
@@ -127,29 +50,7 @@
       }
     },
 
-    data () {
-      return {
-        coversArr: []
-      }
-    },
-
-    mounted () {
-      this.coversArr = this.filterContentArr()
-    },
-
     methods: {
-      filterContentArr () {
-        return this.content.filter(el => el.projectsgallery)
-      },
-
-      brickClass (brick) {
-        return {
-          'to-gallery-block__brick': true,
-          'brick--bottom-align': brick.alignment !== 'top',
-          'brick-empty': brick.isEmpty === true
-        }
-      },
-
       brickStyles (brick) {
         return parseInt(brick.offset) === 0 ? `width: ${brick.width}; margin-left: unset;` : `width: ${brick.width}; margin-left: ${brick.offset}%;`
       },
@@ -157,6 +58,7 @@
       setPagePosition () {
         let position = window.scrollY
         this.$store.commit('SET_PAGE_POSITION', { data: position })
+        this.$store.commit('SET_PAGE_REDIRECT', { data: true })
       },
 
       srcSet (img) {
@@ -174,106 +76,30 @@
   @import "./../../assets/styles/vars/_fonts";
   @import "./../../assets/styles/helpers/_breakpoints";
 
-  .to-projects-block {
+  .to-projects {
     display: flex;
-    flex-flow: row nowrap;
-    width: 100%;
-    margin-bottom: 93px;
+    flex-flow: row wrap;
+    width: calc(100% + 10px);
+    margin: 0 -5px 93px -5px;
 
-    &__row {
-      display: flex;
-      flex-wrap: nowrap;
-      align-items: flex-start;
-      margin: 0 -5px;
-      padding: 0 5px;
-      line-height: 0;
-
-      &--mobile {
-        display: none;
-        position: relative;
-
-        &.row-vimeo {
-          &::before {
-            display: none;
-          }
-        }
-
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: 90;
-          width: 100%;
-          height: 100%;
-          background-color: darken(#fff, 2);
-          transition: 1s;
-        }
-
-        &[lazy=loading] {
-          &::before  {
-            opacity: 1;
-          }
-        }
-
-        &[lazy=loaded] {
-          &::before {
-            opacity: 0;
-          }
-        }
-
-        @include media(mobile) {
-          display: block;
-          margin-bottom: 13px;
-          text-align: center;
-        }
-
-        &-wrapper {
-          display: none;
-          text-align: center;
-          font-size: 17px;
-          color: #000;
-          font-size: 14px;
-          line-height: 1.3;
-          transition: .3s;
-
-          .info__title {
-            font-weight: 600;
-          }
-
-          .info-block {
-            margin-top: 2px;
-          }
-
-          @include media(mobile) {
-            display: block;
-          }
-        }
-      }
-
-      @include media(mobile) {
-        display: none;
-      }
-    }
-
-    &__brick {
+    &__brick-wrapper {
       align-items: flex-start;
       position: relative;
       overflow: hidden;
+      width: calc(100% / 3);
+      padding: calc((100% / 3) * .70) 8px 0 8px;
+      margin: 0 0 16px;
+      line-height: 0;
 
-      &.brick--bottom-align {
-        align-self: flex-end;
-      }
-
-      .brick-nolink {
-        position: relative;
-        display: block;
+      .to-projects__brick {
+        position: absolute;
+        top: 0;
+        left: 8px;
         height: 100%;
-        width: 100%;
-        cursor: default;
+        width: calc(100% - 16px);
       }
 
-      a:not(.brick-nolink) {
+      a {
         position: relative;
         display: block;
         height: 100%;
@@ -348,7 +174,9 @@
 
       img {
         width: 100%;
-        object-fit: contain;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
         transition: .3s;
       }
 
@@ -372,37 +200,6 @@
         .info-block {
           margin-top: 2px;
         }
-      }
-    }
-
-    .brick {
-      &-wrapper {
-        margin: 0 0 10px;
-        padding: 0 5px;
-      }
-    }
-
-    .row-mobile__info {
-      margin-bottom: 20px;
-      font-size: 17px;
-    }
-
-    .mobile-iframe-wrapper {
-      position: relative;
-      height: 0;
-      height: auto;
-      max-width: 100%;
-      padding-bottom: 56.25%;
-      overflow: hidden;
-
-      iframe,
-      object,
-      embed {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
       }
     }
 
