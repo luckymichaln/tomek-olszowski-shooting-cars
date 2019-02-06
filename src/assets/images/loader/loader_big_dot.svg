@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34" id="el_zy76zMBC2"><style>@-webkit-keyframes kf_el_NV3EDpprRg_an_OK1J0UKLc{
+0%{opacity: .25;}
+50%{opacity: 0;}
+100%{opacity: .25;}}
+@keyframes kf_el_NV3EDpprRg_an_OK1J0UKLc{
+0%{opacity: .25;}
+50%{opacity: 0;}
+100%{opacity: .25;}}
+#el_zy76zMBC2 *{-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-iteration-count: infinite;animation-iteration-count: infinite;;-webkit-animation-timing-function: cubic-bezier(0, 0, 1, 1);animation-timing-function: cubic-bezier(0, 0, 1, 1);}
+#el_NV3EDpprRg{fill: #171717;fill-rule: evenodd;-webkit-animation-fill-mode: backwards;animation-fill-mode: backwards;opacity: 1;-webkit-animation-name: kf_el_NV3EDpprRg_an_OK1J0UKLc;animation-name: kf_el_NV3EDpprRg_an_OK1J0UKLc;-webkit-animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);}</style>
+  <metadata><!--?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?-->
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c138 79.159824, 2016/09/14-01:09:01        ">
+   <rdf:rdf xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:description rdf:about=""/>
+   </rdf:rdf>
+</x:xmpmeta>
+<!--?xpacket end="w"?--></metadata>
+<defs>
+  </defs>
+  <path id="el_NV3EDpprRg" data-name="." d="M16.989,31.96A14.856,14.856,0,0,0,31.765,17.245,14.958,14.958,0,0,0,16.989,2.468,14.908,14.908,0,0,0,2.212,17.245,14.807,14.807,0,0,0,16.989,31.96Z"/>
+</svg>
