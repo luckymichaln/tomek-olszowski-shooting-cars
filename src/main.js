@@ -11,7 +11,6 @@ Vue.use(VueLazyload)
 Vue.config.productionTip = true
 
 /* eslint-disable no-new */
-
 setTimeout(() => {
   Vue.use(VueLazyload, {
     preLoad: 1.3,
@@ -24,6 +23,6 @@ new Vue({
   el: '#app',
   router,
   store,
-  template: '<App/>',
-  components: { App }
+  components: { App },
+  template: '<App/>'
 })
