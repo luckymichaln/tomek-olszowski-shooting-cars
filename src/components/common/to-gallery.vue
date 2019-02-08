@@ -128,7 +128,7 @@ export default {
     left: 50%;
     top: 50%;
     z-index: 20;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate(180deg);
     display: block;
     /* height: 155px;
     width: 90px;
@@ -285,8 +285,8 @@ export default {
 
 @keyframes scroll {
   0% {
-    /* opacity: 0; */
-    transform: translate(-50%, -15px);
+    opacity: 0;
+    transform: translate(-50%, -8px);
   }
 
   50% {
@@ -294,8 +294,7 @@ export default {
   }
 
   100% {
-    opacity: 0;
-    transform: translate(-50%, -8px);
+    transform: translate(-50%, -15px);
   }
 }
 </style>
