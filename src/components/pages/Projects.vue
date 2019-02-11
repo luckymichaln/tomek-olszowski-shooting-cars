@@ -51,7 +51,7 @@ export default {
         setTimeout(() => {
           body.style.height = "auto";
           body.style.overflow = "visible";
-        }, 1600);
+        }, 2000);
       }
     }
   },
