@@ -66,8 +66,8 @@ export default {
 .to-projects {
   display: flex;
   flex-flow: row wrap;
-  width: calc(100% + 10px);
-  margin: 0 -5px 50px -5px;
+  width: calc(100% + 6px);
+  margin: 0 -3px 50px -3px;
 
   &__brick-wrapper {
     align-items: flex-start;

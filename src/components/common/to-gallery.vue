@@ -1,6 +1,5 @@
 <template>
   <div class="to-gallery">
-    <div class="to-gallery__scroll-icon" ref="scrollIcon"/>
     <div v-if="vimeoid" class="to-gallery__vimeo-wrapper">
       <iframe
         :src="vimeoSrc"
@@ -53,6 +52,7 @@
         </a>
       </div>
     </div>
+    <div class="to-gallery__scroll-icon" ref="scrollIcon"/>
   </div>
 </template>
 <script>
@@ -96,7 +96,6 @@ export default {
       if (icon) {
         setTimeout(() => {
           icon.style.opacity = 0;
-
           setTimeout(() => {
             icon.remove();
           }, 500);
@@ -124,18 +123,16 @@ export default {
 <style lang="scss">
 .to-gallery {
   &__scroll-icon {
-    position: fixed;
+    position: sticky;
     left: 50%;
-    top: 50%;
+    bottom: 0;
     z-index: 20;
-    transform: translate(-50%, -50%) rotate(180deg);
+    transform: translate(-50%, 0) rotate(180deg);
     display: block;
-    /* height: 155px;
-    width: 90px;
-    border-radius: 38px; */
     height: 95px;
     width: 60px;
     border-radius: 25px;
+    margin-bottom: -95px;
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0px 3px 16px rgba(0, 0, 0, 0.26);
     transition: opacity 0.5s;
@@ -146,8 +143,6 @@ export default {
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      /* width: 6px;
-      height: 22px; */
       width: 4px;
       height: 14px;
       border-radius: 8px;
