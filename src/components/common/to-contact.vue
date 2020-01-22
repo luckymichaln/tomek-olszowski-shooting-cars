@@ -68,7 +68,6 @@
 
     &__secondary-info {
       display: flex;
-      justify-content: space-between;
 
       @include media(mobile) {
         flex-flow: column nowrap;
